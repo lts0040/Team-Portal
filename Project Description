@@ -1,4 +1,9 @@
   Problem statement and list of users:
+      One of the main issues that many doctors and patients face is communication. There have been many times in 
+which a patient needed help from a doctor, but has no good way to contact them or to let them know in advance 
+any sort of changes happened to their body. There’s also been instances of doctors needing to contact patients 
+in order to remind them of medications/treatments, or to tell them that there’s been a change in them. Therefore, 
+the creation of a portal for both patients and doctors to use would be immensely useful for them.
       The doctor - patient portal is chosen to be our project since it’s convenient for doctors, nurses and patients. 
 Firstly, it is an environmentally friendly way to keep track of our medical records digitally rather than physically, 
 which also lower the risk of losing important documents. With the portal, both doctors and patients can have access 
