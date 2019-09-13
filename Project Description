@@ -1,15 +1,26 @@
-  Problem statement and list of users:
+  Problem statement:
       One of the main issues that many doctors and patients face is communication. There have been many times in 
 which a patient needed help from a doctor, but has no good way to contact them or to let them know in advance 
 any sort of changes happened to their body. There’s also been instances of doctors needing to contact patients 
 in order to remind them of medications/treatments, or to tell them that there’s been a change in them. Therefore, 
-the creation of a portal for both patients and doctors to use would be immensely useful for them.
-      The doctor - patient portal is chosen to be our project since it’s convenient for doctors, nurses and patients. 
+the creation of a portal for both patients and doctors to use would be immensely useful for them. 
+      The patient portal was chosen to be our project since it’s convenient for doctors, nurses and patients. 
 Firstly, it is an environmentally friendly way to keep track of our medical records digitally rather than physically, 
 which also lower the risk of losing important documents. With the portal, both doctors and patients can have access 
 to the patients’ medical history and prescriptions. Besides, sometimes it’s difficult to reach our doctors, and the 
 portal can be an easy way to communicate between doctors and patients. On top of that, patients can easily schedule 
 a doctor appointment using the portal, and doctors can also manage their working schedule however they want. 
+  List of users/functionalities:
+    Doctors - The doctors need to have access to all of their patients' medical records and their contact information.
+In addition, the doctor needs to have a schedule which shows their current appointments with their patients and other
+activities which need to be scheduled. There should also be a method for the doctor to block out certain times to prevent
+patients from scheduling appointments during that time. Finally, the doctor should have access to references they may need
+to consult and an easy way to store recommendations for other doctors or specialists which can be accessed by their patients.
+    Patients - The patient needs to have access to their individual medical records and have the ability to edit their contact
+information. In addition, a schedule should be available which shows their past appointments with the doctor and any future
+appointments which may be scheduled. The patient should also be able to view their doctor's schedule in order to schedule
+an appointment through the system.
+  Potential technologies:
       Some technologies being looked into for this project include MySQL, DigitalOcean, Wordpress, and 
 Bluehost. MySQL will be the database designated for storing all user records including patient-doctor conversation
 queries, patient medical records/prescriptions, and doctors' schedules. DigitalOcean will be used for hosting/deploying 
