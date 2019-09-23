@@ -1,0 +1,82 @@
+
+
+
+
+
+
+Software Requirements Specification
+
+Version 1.0
+
+September 23, 2019
+
+Doctor-Patient Portal
+
+Lucas Simpson
+Ngan Tran
+Anthony Nguyen
+Ryan Vo
+
+
+
+
+
+1. Introduction
+
+1.1 Purpose
+  One of the main issues that many doctors and patients face is communication. There have been many times in which a patient needed help from a doctor, but has no good way to contact them or to let them know in advance any sort of changes happened to their body. There’s also been instances of doctors needing to contact patients in order to remind them of medications/treatments, or to tell them that there’s been a change in them. Therefore, the creation of a portal for both patients and doctors to use would be immensely useful for them.
+  The patient portal was chosen to be our project since it’s convenient for doctors, nurses and patients. Firstly, it is an environmentally friendly way to keep track of our medical records digitally rather than physically, which also lower the risk of losing important documents. With the portal, both doctors and patients can have access to the patients’ medical history and prescriptions. Besides, sometimes it’s difficult to reach our doctors, and the portal can be an easy way to communicate between doctors and patients. On top of that, patients can easily schedule a doctor appointment using the portal, and doctors can also manage their working schedule however they want.
+
+1.2 Scope
+  Doctors - The doctors need to have access to all of their patients' medical records and their contact information. In addition, the doctor needs to have a schedule which shows their current appointments with their patients and other activities which need to be scheduled. There should also be a method for the doctor to block out certain times to prevent patients from scheduling appointments during that time. Finally, the doctor should have access to references they may need to consult and an easy way to store recommendations for other doctors or specialists which can be accessed by their patients.
+  Patients - The patient needs to have access to their individual medical records and have the ability to edit their contact information. In addition, a schedule should be available which shows their past appointments with the doctor and any future
+appointments which may be scheduled. The patient should also be able to view their doctor's schedule in order to schedule an appointment through the system.
+
+1.3 Definitions, Acronyms, Abbreviations
+
+1.4 Reference Documents
+
+1.5 Overview
+			
+
+2. Overall Descriptions
+
+2.1 Product Perspective
+
+2.2 Product Functions
+
+2.3 User characteristics
+
+2.4 Constraints
+
+2.5 Assumptions and dependencies
+
+
+3. Specific Requirements
+
+3.1 External interface
+
+3.1.1 User interfaces
+
+3.1.2 Hardware interfaces
+
+3.1.3 Software interfaces
+
+3.1.4 Communication interfaces
+
+3.2 Functional requirements
+
+3.2.1 Mode 1 
+
+3.3 Performance requirements
+
+3.4 Design constraints
+
+3.5 Other requirements
+
+
+4. Appendices
+
+
+5. Index
+
