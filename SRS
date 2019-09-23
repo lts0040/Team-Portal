@@ -40,17 +40,23 @@ appointments which may be scheduled. The patient should also be able to view the
 			
 
 2. Overall Descriptions
+	The doctor-patient portal provides an efficient way of communication between doctors and patients. Additionally, patients can use the portal to schedule or cancel their appointments, and doctors can also view and adjust their work schedule effectively. On top of that, the portal is an archive storing patient medical records and prescriptions, which both doctors and patients can keep track of. 
 
 2.1 Product Perspective
+	The doctor-patient portal is a new way of communicating between doctors and patients. Patients can schedule their doctor’s appointments without the hassle of calling and confirming with the clinic. Additionally, the portal is an eco-friendly way for patients to keep track of important medical records and prescriptions.
 
 2.2 Product Functions
-
+	Nurses and doctors can schedule or cancel appointments, and they can adjust doctors’ work schedule. Besides, they can view their current appointments with patients. Doctors and nurses can also message patients to remind them of their appointments or other activities such as blood testing, MRI scans, etc.  On top of that, they can view patients’ medical records as well as prescriptions. 
+	On the other hand, patients can schedule appointment based on doctor’s schedule. Additionally, patients can view their current and future appointments with doctors, and they can message doctors when needed. Besides, they can view their medical records and prescriptions on the portal.
+	
 2.3 User characteristics
+	Adult patients who are very busy with their lives and work, but they need to schedule doctor’s appointment consistently. For example, ideal patients who need this software is pregnant women, diabetic patients or patients with thyroid goiters, etc. Besides, doctors and nurses are also the users of the portal.
 
 2.4 Constraints
+	Since medical records are confidential, security is an important characteristic of the software. Thus, doctors and patients will need usernames and passwords to access the portal.
 
 2.5 Assumptions and dependencies
-
+	We’ll assume that only adult patients have access to this software. 
 
 3. Specific Requirements
 
