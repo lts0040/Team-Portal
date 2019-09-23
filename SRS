@@ -53,7 +53,7 @@ appointments which may be scheduled. The patient should also be able to view the
 	Adult patients who are very busy with their lives and work, but they need to schedule doctor’s appointment consistently. For example, ideal patients who need this software is pregnant women, diabetic patients or patients with thyroid goiters, etc. Besides, doctors and nurses are also the users of the portal.
 
 2.4 Constraints
-	Since medical records are confidential, security is an important characteristic of the software. Thus, doctors and patients will need usernames and passwords to access the portal.
+	Since medical records are confidential, security is an important characteristic of the software. Thus, doctors and patients will need usernames and passwords to access the portal. Additionally, time and resouces are other constraints for this program since we're college students. Therefore, this software's GUI will be very simple, and security matters will not be focused in this software. 
 
 2.5 Assumptions and dependencies
 	We’ll assume that only adult patients have access to this software. 
