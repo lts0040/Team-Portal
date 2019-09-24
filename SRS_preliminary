@@ -129,7 +129,7 @@ appointments which may be scheduled. The patient should also be able to view the
 3.3 Performance requirements
      Fast, reliable, efficient, user-friendliness, must have 2 different features for doctors and patients.
 3.4 Design constraints
-
+     No security in terms of keeping accounts safe from any sort of "attacks" for now; solely focused on making the other features work for now.
 3.5 Other requirements
 
 
