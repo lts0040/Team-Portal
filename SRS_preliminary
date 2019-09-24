@@ -127,7 +127,7 @@ appointments which may be scheduled. The patient should also be able to view the
 		Both the doctor and patient can access records via the 'Patient records' tab on the top menu. A list of records will be displayed on the records screen. A record can be clicked on to bring up a more detailed page of the record. The record list can be filtered based on date on both sides, and by name on the doctor's side.
 
 3.3 Performance requirements
-
+     Fast, reliable, efficient, user-friendliness, must have 2 different features for doctors and patients.
 3.4 Design constraints
 
 3.5 Other requirements
