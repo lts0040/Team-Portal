@@ -37,7 +37,7 @@ appointments which may be scheduled. The patient should also be able to view the
 1.4 Reference Documents
 
 1.5 Overview
-			
+	The Doctor-Patient Portal serves as a way to connect the patient and their doctor. This is accomplished by having everything needed for the patient and the doctor in one central location. For the patient, they need to be able to schedule and talk with their doctor and view their own medical records in a secure fashion. For the doctor, they need to be able to set their own availability	for appointments, view their patients' medical records in a secure fashion, and be able to talk to their patients.
 
 2. Overall Descriptions
 	The doctor-patient portal provides an efficient way of communication between doctors and patients. Additionally, patients can use the portal to schedule or cancel their appointments, and doctors can also view and adjust their work schedule effectively. On top of that, the portal is an archive storing patient medical records and prescriptions, which both doctors and patients can keep track of. 
