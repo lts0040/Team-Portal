@@ -24,11 +24,24 @@ Ryan Vo
 1. Introduction
 
 1.1 Purpose
-  One of the main issues that many doctors and patients face is communication. There have been many times in which a patient needed help from a doctor, but has no good way to contact them or to let them know in advance any sort of changes happened to their body. There’s also been instances of doctors needing to contact patients in order to remind them of medications/treatments, or to tell them that there’s been a change in them. Therefore, the creation of a portal for both patients and doctors to use would be immensely useful for them.
-  The patient portal was chosen to be our project since it’s convenient for doctors, nurses and patients. Firstly, it is an environmentally friendly way to keep track of our medical records digitally rather than physically, which also lower the risk of losing important documents. With the portal, both doctors and patients can have access to the patients’ medical history and prescriptions. Besides, sometimes it’s difficult to reach our doctors, and the portal can be an easy way to communicate between doctors and patients. On top of that, patients can easily schedule a doctor appointment using the portal, and doctors can also manage their working schedule however they want.
+  One of the main issues that many doctors and patients face is communication. There have been many times in which a patient needed 
+  help from a doctor, but has no good way to contact them or to let them know in advance any sort of changes happened to their body. 
+  There’s also been instances of doctors needing to contact patients in order to remind them of medications/treatments, or to tell 
+  them that there’s been a change in them. Therefore, the creation of a portal for both patients and doctors to use would be immensely 
+  useful for them. The patient portal was chosen to be our project since it’s convenient for doctors, nurses and patients. Firstly, 
+  it is an environmentally friendly way to keep track of our medical records digitally rather than physically, which also lower the 
+  risk of losing important documents. With the portal, both doctors and patients can have access to the patients’ medical history 
+  and prescriptions. Besides, sometimes it’s difficult to reach our doctors, and the portal can be an easy way to communicate between 
+  doctors and patients. On top of that, patients can easily schedule a doctor appointment using the portal, and doctors can also 
+  manage their working schedule however they want.
 
-1.2 Scope
-  Doctors - The doctors need to have access to all of their patients' medical records and their contact information. In addition, the doctor needs to have a schedule which shows their current appointments with their patients and other activities which need to be scheduled. There should also be a method for the doctor to block out certain times to prevent patients from scheduling appointments during that time. Finally, the doctor should have access to references they may need to consult and an easy way to store recommendations for other doctors or specialists which can be accessed by their patients.
+1.2 Scope (* MK: You can include this in user characteristics. Your scope is more of a high-level description of what your app will do. 
+Please check slides for what to include in scope *)
+  Doctors - The doctors need to have access to all of their patients' medical records and their contact information. In addition, 
+  the doctor needs to have a schedule which shows their current appointments with their patients and other activities which need 
+  to be scheduled. There should also be a method for the doctor to block out certain times to prevent patients from scheduling 
+  appointments during that time. Finally, the doctor should have access to references they may need to consult and an easy way 
+  to store recommendations for other doctors or specialists which can be accessed by their patients.
   Patients - The patient needs to have access to their individual medical records and have the ability to edit their contact information. In addition, a schedule should be available which shows their past appointments with the doctor and any future
 appointments which may be scheduled. The patient should also be able to view their doctor's schedule in order to schedule an appointment through the system.
 
@@ -36,24 +49,39 @@ appointments which may be scheduled. The patient should also be able to view the
 
 1.4 Reference Documents
 
-1.5 Overview
+1.5 Overview (*MK: You can move this to scope. Overview implies how the SRS document is organized. Such as `The rest of the document is organized as follows. Section 2 describes ..., Section 3 details.. . *)
 	The Doctor-Patient Portal serves as a way to connect the patient and their doctor. This is accomplished by having everything needed for the patient and the doctor in one central location. For the patient, they need to be able to schedule and talk with their doctor and view their own medical records in a secure fashion. For the doctor, they need to be able to set their own availability	for appointments, view their patients' medical records in a secure fashion, and be able to talk to their patients.
 
 2. Overall Descriptions
-	The doctor-patient portal provides an efficient way of communication between doctors and patients. Additionally, patients can use the portal to schedule or cancel their appointments, and doctors can also view and adjust their work schedule effectively. On top of that, the portal is an archive storing patient medical records and prescriptions, which both doctors and patients can keep track of. 
+	The doctor-patient portal provides an efficient way of communication between doctors and patients. Additionally, patients can 
+	use the portal to schedule or cancel their appointments, and doctors can also view and adjust their work schedule effectively. 
+	On top of that, the portal is an archive storing patient medical records and prescriptions, which both doctors and patients can 
+	keep track of. 
 
 2.1 Product Perspective
-	The doctor-patient portal is a new way of communicating between doctors and patients. Patients can schedule their doctor’s appointments without the hassle of calling and confirming with the clinic. Additionally, the portal is an eco-friendly way for patients to keep track of important medical records and prescriptions.
+	The doctor-patient portal is a new way of communicating between doctors and patients. Patients can schedule their doctor’s 
+	appointments without the hassle of calling and confirming with the clinic. Additionally, the portal is an eco-friendly way 
+	for patients to keep track of important medical records and prescriptions.
 
 2.2 Product Functions
-	Nurses and doctors can schedule or cancel appointments, and they can adjust doctors’ work schedule. Besides, they can view their current appointments with patients. Doctors and nurses can also message patients to remind them of their appointments or other activities such as blood testing, MRI scans, etc.  On top of that, they can view patients’ medical records as well as prescriptions. 
-	On the other hand, patients can schedule appointment based on doctor’s schedule. Additionally, patients can view their current and future appointments with doctors, and they can message doctors when needed. Besides, they can view their medical records and prescriptions on the portal.
+	Nurses and doctors can schedule or cancel appointments, and they can adjust doctors’ work schedule. Besides, they can view 
+	their current appointments with patients. Doctors and nurses can also message patients to remind them of their appointments 
+	or other activities such as blood testing, MRI scans, etc.  On top of that, they can view patients’ medical records as well 
+	as prescriptions. 
+	On the other hand, patients can schedule appointment based on doctor’s schedule. Additionally, patients can view their 
+	current and future appointments with doctors, and they can message doctors when needed. Besides, they can view their medical 
+	records and prescriptions on the portal.
 	
 2.3 User characteristics
-	Adult patients who are very busy with their lives and work, but they need to schedule doctor’s appointment consistently. For example, ideal patients who need this software is pregnant women, diabetic patients or patients with thyroid goiters, etc. Besides, doctors and nurses are also the users of the portal.
+	Adult patients who are very busy with their lives and work, but they need to schedule doctor’s appointment consistently. 
+	For example, ideal patients who need this software is pregnant women, diabetic patients or patients with thyroid goiters, etc. 
+	Besides, doctors and nurses are also the users of the portal.
 
 2.4 Constraints
-	Since medical records are confidential, security is an important characteristic of the software. Thus, doctors and patients will need usernames and passwords to access the portal. Additionally, time and resouces are other constraints for this program since we're college students. Therefore, this software's GUI will be very simple, and security matters will not be focused in this software. 
+	Since medical records are confidential, security is an important characteristic of the software. Thus, doctors and patients 
+	will need usernames and passwords to access the portal. Additionally, time and resouces are other constraints for this 
+	program since we're college students. Therefore, this software's GUI will be very simple, and security matters will not 
+	be focused in this software. 
 
 2.5 Assumptions and dependencies
 	We’ll assume that only adult patients have access to this software. 
@@ -63,7 +91,7 @@ appointments which may be scheduled. The patient should also be able to view the
 
 3.1 External interface
 
-3.1.1 User interfaces
+3.1.1 User interfaces (*MK: Need to explain screens and possible functionalities offered via them. No need to detail location of buttons etc *)
 	The user will interact with the system via any web browser.
 	
 3.1.2 Hardware interfaces
@@ -125,12 +153,12 @@ appointments which may be scheduled. The patient should also be able to view the
 	ID: FR7
 	FEATURE: Viewing patient records
 		Both the doctor and patient can access records via the 'Patient records' tab on the top menu. A list of records will be displayed on the records screen. A record can be clicked on to bring up a more detailed page of the record. The record list can be filtered based on date on both sides, and by name on the doctor's side.
-
-3.3 Performance requirements
+(*MK: Is doctor and nurse considered same here. Please add requirements for administrators too *)
+3.3 Performance requirements (*MK: YOU NEED TO BE SPECIFIC. THIS IS TOO HIGH LEVEL. SEE EXAMPLES IN CLASS AND SLIDES)
      Fast, reliable, efficient, user-friendliness, must have 2 different features for doctors and patients.
-3.4 Design constraints
-     No security in terms of keeping accounts safe from any sort of "attacks" for now; solely focused on making the other features work for now.
-3.5 Other requirements
+3.4 Design constraints (Please add more design constraints by looking at design constraints slide)
+     (Move this to assumption or constraints discussed earlier) No security in terms of keeping accounts safe from any sort of "attacks" for now; solely focused on making the other features work for now.
+3.5 Other requirements (Add availability and data integrity requirements)
 
 
 4. Appendices
