@@ -39,5 +39,15 @@ if (!$page_title){
         <a class="dropdown-item" href="#d3">Link 3</a>
       </div>
     </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="/messaging.php">Messages</a>
+    </li>
+    <li class="nav-item" style="float:right !important;">
+      <a class="nav-link" href="/login.php">Login</a>
+    </li>
+    <li class="nav-item" style="float:right !important;">
+      <a class="nav-link" href="/logout.php">Logout</a>
+    </li>
   </ul>
 </nav>

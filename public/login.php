@@ -1,0 +1,55 @@
+<?php
+session_start();
+$page_title = "DP Portal";
+
+error_reporting(-1);
+ini_set('display_errors', 'true');
+
+include('header.php'); 
+include('config.php');
+?>
+
+<html>
+<head>
+	<link href="register.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+	<h1 align="center">Login</h1>
+	<div align="center" id="container">
+		<form method="post">
+			<div id = "input_box">
+				<input type="text" placeholder="Username" id="user_name" name="Username" class="input" required /><br><br>
+
+				<input type="password" placeholder="Password" name="Password" class="input" 		   required/><br><br>
+				<a href="/register.php">Register Here</a><br><br>
+				<input type="submit" href="/index.php" id="login" name="login"/>
+			</div>
+		</form>
+	</div>
+
+	<?php if(isset($_POST['login'])) {
+		$user_name = $_POST['Username'];
+		$Password = $_POST['Password'];
+
+		$query = 'SELECT * FROM `users` where `username` = "'.$user_name.'" AND `password` = "'.$Password.'"';
+
+		$r = mysqli_query($link, $query);
+
+		if($r){
+			if(mysqli_num_rows($r) > 0) {
+				$_SESSION['username'] = $user_name;
+				header("location:index.php");
+			}
+			else {
+				echo '<p style="color:red" align="center">Login Failed</p>';
+			}
+		}
+		else{
+			echo $q;
+		}
+	}
+	?>
+</body>	
+</html>
+
+<?php include('footer.php'); ?>
