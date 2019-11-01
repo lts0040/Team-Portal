@@ -1,0 +1,15 @@
+*{
+	margin: 0px; 
+	padding: 0px;
+}
+
+#container{
+	border:1px solid black;
+	width:400px;
+	margin:0px auto;
+}
+
+#input_box{
+	width: 92%;
+	padding: 3%;
+}
