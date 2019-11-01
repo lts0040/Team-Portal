@@ -1,5 +1,3 @@
-<html>
-<body>
 <?php
 
 $page_title = "DP Portal";
@@ -14,5 +12,3 @@ if(isset($_SESSION['username']))
 <p>This is the main text for the home page of the doctor patient portal!</p>
 <a href="../login.php">Login here!</a><br>
 <?php include('footer.php'); ?>
-</body>
-</html>
