@@ -1,9 +1,9 @@
 <?php
-	//session_start();
+	session_start();
 	$page_title = "DP Portal";
 	include('../config.php');
-	include('../funcs/getDoctorAuth.php');
-	include('../header.php'); 
+	include('../funcs/getAuth.php');
+	include('../header-for-Dr.php'); 
 ?>
 <html>
 	<head>
@@ -11,7 +11,8 @@
 	</head>
 	<body>
 	
-	<?php
+	<?php include '../funcs/getAuth.php';
+		$isDoctor = getDoctorAuthID();
 		
 		if($isDoctor == 0){
 			echo 'Unauthorized to see this!';
@@ -24,13 +25,25 @@
 		
 		if($resultCheck > 0){
 			echo " <h2 style=\"text-align:center\" >Patient List </h2>" ;
+			
 			while( $row = mysqli_fetch_assoc($result) ){
-				echo $row['username'] . "<br>";
+				
+				$queryRecord = "SELECT r.record FROM records AS r JOIN users AS u ON u.uid = r.p_uid 
+									WHERE u.username = '".$row['username']."';" ;
+				
+				$r = mysqli_query($link, $queryRecord);
+				echo $row['username']  ;
+				
+				while( $record = mysqli_fetch_assoc($r) ){
+					echo ": &nbsp " . $record['record']. "<br>" ;
+				}
 			}
 		}
 		else{
 			echo 'No users!';
 		}
+		
+		
 	?>
 	
 	
