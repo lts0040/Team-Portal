@@ -2,6 +2,7 @@
 require_once 'tools.php';
 if (!$page_title){
   $page_title = "DP Portal";
+ // require ('/funcs/getDoctorAuth.php');
 }
 ?>
 <head>
@@ -39,8 +40,7 @@ if (!$page_title){
         <a class="dropdown-item" href="#d3">Link 3</a>
       </div>
     </li>
-
-    <li class="nav-item">
+	<li class="nav-item">
       <a class="nav-link" href="/messaging.php">Messages</a>
     </li>
     <li class="nav-item" style="float:right !important;">
