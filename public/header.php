@@ -4,6 +4,7 @@ require_once 'tools.php';
 include('config.php');
 if (!$page_title){
   $page_title = "DP Portal";
+ // require ('/funcs/getDoctorAuth.php');
 }
 ?>
 <head>
@@ -69,6 +70,8 @@ if (!$page_title){
         }
       ?>
       <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
+	<li class="nav-item">
+      <a class="nav-link" href="/messaging.php">Messages</a>
     </li>
     <li class="nav-item" style="float:right !important;">
       <a class="nav-link" href="/login.php">Login</a>
