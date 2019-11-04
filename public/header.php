@@ -70,8 +70,6 @@ if (!$page_title){
         }
       ?>
       <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
-	<li class="nav-item">
-      <a class="nav-link" href="/messaging.php">Messages</a>
     </li>
     <li class="nav-item" style="float:right !important;">
       <a class="nav-link" href="/login.php">Login</a>
