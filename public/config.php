@@ -1,6 +1,6 @@
 <?php
 date_default_timezone_set('America/New_York');
-$link = new mysqli("127.0.0.1", "root", "Team_Portal!", "dp_portal");
+$link = new mysqli("127.0.0.1", "root", "", "dp_portal");
 $link->set_charset('utf8');
 // Check connection
 $link->query("set character_set_client='utf8'"); 

@@ -1,5 +1,7 @@
 <?php
+session_start();
 require_once 'tools.php';
+include('config.php');
 if (!$page_title){
   $page_title = "DP Portal";
 }
@@ -41,7 +43,32 @@ if (!$page_title){
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="/messaging.php">Messages</a>
+      <?php 
+        if(isset($_SESSION['username'])) {
+          $q = 'SELECT `from_user`, `to_user` FROM `messages` WHERE `to_user` = "'.$_SESSION['username'].'" OR `from_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC LIMIT 1';
+
+          $r = mysqli_query($link, $q);
+
+          if($r) {
+            if(mysqli_num_rows($r) > 0) {
+              $value = mysqli_fetch_object($r);
+              $to_user = $value->to_user;
+              $from_user = $value->from_user;
+
+              if($to_user == $_SESSION['username']) {
+                $_SESSION['to_user'] = $from_user;
+              }
+              else {
+                $_SESSION['to_user'] = $to_user;
+              }
+            }
+            else {
+              $_SESSION['to_user'] = $_SESSION['username'];
+            }
+          }
+        }
+      ?>
+      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
     </li>
     <li class="nav-item" style="float:right !important;">
       <a class="nav-link" href="/login.php">Login</a>
