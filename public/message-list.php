@@ -23,7 +23,7 @@
 						?>	
 							<div class="chat_people" style="border-bottom: 1px solid #cdcdcd !important; padding-top: 5px; padding-bottom: 5px;">
 								<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-								<a href="?user=<?php echo $to_uid ?>"
+								<a href="?user=<?php echo $to_user ?>"
 								    <span class="chat_ib">
 								      <h5><?php echo $to_user ?> <span class="chat_date"><?php echo $time ?></span></h5>
 								      <p><?php echo $message ?></p>
@@ -44,7 +44,7 @@
 						?>
 							<div class="chat_people" style="border-bottom: 1px solid #cdcdcd !important; padding-top: 5px; padding-bottom: 5px;">
 								<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-								<a href="?user=<?php echo $from_uid ?>">
+								<a href="?user=<?php echo $from_user ?>">
 								    <span class="chat_ib">
 								      <h5><?php echo $from_user ?> <span class="chat_date"><?php echo $time ?></span></h5>
 								      <p><?php echo $message ?></p>

@@ -1,5 +1,7 @@
 <?php
-session_start();
+if(session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 require_once 'tools.php';
 include('config.php');
 if (!$page_title){
