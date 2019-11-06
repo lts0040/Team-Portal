@@ -27,22 +27,13 @@ if (!$page_title){
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#test1">test 1</a>
+      <a class="nav-link" href="#appointments">Appointments</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#test2">test 2</a>
+      <a class="nav-link" href="/records.php">Records</a>
     </li>
-
-    <!-- Dropdown -->
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        dropdown 1
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#d1">Link 1</a>
-        <a class="dropdown-item" href="#d2">Link 2</a>
-        <a class="dropdown-item" href="#d3">Link 3</a>
-      </div>
+    <li class="nav-item">
+      <a class="nav-link" href="/medications.php">Medications</a>
     </li>
 
     <li class="nav-item">

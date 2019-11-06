@@ -22,26 +22,34 @@ if (!$page_title){
 
   <!-- Links -->
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#test1">test 1</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#test2">test 2</a>
-    </li>
 
-    <!-- Dropdown -->
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        dropdown 1
+      <a class="nav-link dropdown-toggle" href="/appointments.php" id="navbardrop" data-toggle="dropdown">
+        Appointments
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" href="#d1">Link 1</a>
-        <a class="dropdown-item" href="#d2">Link 2</a>
-        <a class="dropdown-item" href="#d3">Link 3</a>
+        <a class="dropdown-item" href="/appointments.php">Current Appointments</a>
+        <a class="dropdown-item" href="/create-appointments.php">Create Appointment</a>
       </div>
     </li>
-	
-	
+	<li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="/records.php" id="navbardrop" data-toggle="dropdown">
+        Records
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/records.php">View Records</a>
+        <a class="dropdown-item" href="/create-record.php">Create Record</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" href="/medications.php" id="navbardrop" data-toggle="dropdown">
+        Medications
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="/medications.php">View Medications</a>
+        <a class="dropdown-item" href="/create-medication.php">Create Medication</a>
+      </div>
+    </li>
 	<li class="nav-item">
 			  <a class="nav-link" href="/view-patients/view-patients.php">View Patient</a>
 			</li>
