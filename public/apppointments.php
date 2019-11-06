@@ -17,7 +17,7 @@ if ($isDoctor > 0) // Doctor side
 
 			while( $row = mysqli_fetch_assoc($result) ){
 
-				$queryRecord = "SELECT r.record, r.timestamp FROM records AS r JOIN users AS u ON u.uid = r.p_uid
+				$queryRecord = "SELECT r.p_uid, r.d_uid, r.date_start, r.date_end, r.purpose FROM appointments AS r JOIN users AS u ON u.uid = r.p_uid
 									WHERE u.username = '".$row['username']."';" ;
 
 				$r = mysqli_query($link, $queryRecord);
