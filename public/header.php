@@ -27,7 +27,7 @@ if (!$page_title){
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="#appointments">Appointments</a>
+      <a class="nav-link" href="/appointments.php">Appointments</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/records.php">Records</a>
