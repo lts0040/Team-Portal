@@ -1,0 +1,6 @@
+On Windows, the server can be set up using XAMPP.
+
+1. Download folder.
+2. In XAMPP, change apache httpd.conf file to change DirectoryRoot and the Directory tag after to redirect to /public in the code folder.
+3. In phpmyadmin, add a database titled dp_portal.
+4. Run mysql_setup.sql in phpmyadmin with dp_portal selected.
