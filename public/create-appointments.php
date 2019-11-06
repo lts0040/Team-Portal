@@ -59,17 +59,19 @@ else
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" ){//&& $isDoctor > 0) {
 if(isset($_POST)==true && empty($_POST)==false){
-    //echo "<p>Here is the data you inputted:</p>";
-	//echo "<p>Username: " . $_POST['Username'] . "</p>";
-    //echo "<p>Timestamp: " . $_POST['Timestamp'] . "</p>";
+    echo "<p>Here is the data you inputted:</p>";
+	echo "<p>Username: " . $_POST['Username'] . "</p>";
+    echo "<p>Time start: " . $_POST['time_start'] . "</p>";
+    echo "<p>Time end: " . $_POST['time_end'] . "</p>";
+    echo "<p>Purpose: " . $_POST['purpose'] . "</p>";
 
-//    $sql_statement = "INSERT INTO appointments (p_uid,d_uid,date_start,date_end,purpose) VALUES(" . $_POST('Username') . ", 1," . $_POST('time_start') . ", " . $_POST('time_end') . ", " . $_POST('purpose') . ");";
-    $sql_statement = "INSERT INTO appointments (p_uid,d_uid,date_start,date_end,purpose) VALUES (" . $_POST('Username') . ", 1," . $_POST('time_start') . ", " . $_POST('time_end') . ", " . $_POST('purpose') . ");";
+    $sql_statement = "INSERT INTO appointments (p_uid,d_uid,date_start,date_end,purpose) VALUES (" . $_POST['Username'] . ",1,'" . $_POST['time_start'] . "','" . $_POST['time_end'] . "','" . $_POST['purpose'] . "');";
+    
     if (!mysqli_query($link, $sql_statement)) {
         die('Error: ' . mysql_error());
     }
     else {
-        echo "<p>Record successfully added!</p>";
+        echo "<p>Appointment successfully added!</p>";
     }
 }
 }

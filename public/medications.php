@@ -34,9 +34,9 @@ if ($isDoctor > 0)
                     
 				while( $record = mysqli_fetch_assoc($r) ){
                     echo '<tr>';
-                    echo '<th scope="row">' . $row['med_name'] . '</th>';
-                    echo '<td>' . $row['med_amount'] . '</td>';
-                    echo '<td>' . $row['med_time'] . '</td>';
+                    echo '<th scope="row">' . $record['med_name'] . '</th>';
+                    echo '<td>' . $record['med_amount'] . '</td>';
+                    echo '<td>' . $record['med_time'] . '</td>';
                     echo '</tr>';
 				}
                 echo '</tbody>';
@@ -67,9 +67,9 @@ else if ($isPatient > 0)
         
     while( $record = mysqli_fetch_assoc($r) ){
         echo '<tr>';
-        echo '<th scope="row">' . $row['med_name'] . '</th>';
-        echo '<td>' . $row['med_amount'] . '</td>';
-        echo '<td>' . $row['med_time'] . '</td>';
+        echo '<th scope="row">' . $record['med_name'] . '</th>';
+        echo '<td>' . $record['med_amount'] . '</td>';
+        echo '<td>' . $record['med_time'] . '</td>';
         echo '</tr>';
     }
     echo '</tbody>';
