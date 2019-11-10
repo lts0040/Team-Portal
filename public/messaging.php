@@ -2,6 +2,11 @@
 $page_title = "DP Portal";
 
 include('header.php'); 
+
+if(!isset($_SESSION['username'])) {
+  header("location:login.php");
+}
+
 ?>
 
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
@@ -16,6 +21,7 @@ include('header.php');
 <link href="messaging.css" type="text/css" rel="stylesheet">
 
 </head>
+<!-- <button style="width: 200px;" onclick="addhtml()">Add HTML Test</button> -->
 <body>
 <div id="New-Message">
   <p class="Message-Header">New Message</p>
@@ -88,14 +94,14 @@ include('header.php');
           </div>
           <div class="srch_bar">
             <div class="stylish-input-group">
-              <input type="text" class="search-bar"  placeholder="Search" >
+              <input type="text" class="search-bar" id="search-bar" onkeyup="load_message()" placeholder="Search" >
               <span class="input-group-addon">
               <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
               </span> 
             </div>
           </div>
         </div>
-        <div class="inbox_chat">
+        <div class="inbox_chat" id="inbox_chat">
           <?php
             require_once("message-list.php");
           ?>
@@ -130,6 +136,16 @@ include('header.php');
 
                 if($r) {
                   echo 'message sent';
+
+                  $html = "<div class='outgoing_msg'><div class='sent_msg'><p>".$message."</p><span class='time_date'>".$format_time."    |    ".$format_date."</span></div></div>";
+
+                  echo '<script type="text/javascript">
+                          var New_html =  $("div.msg_history").html();
+
+                          New_html = New_html.concat("'.$html.'");
+
+                          $("div.msg_history").html(New_html);
+                        </script>';
                 }
                 else {
                   echo $q;
@@ -142,12 +158,40 @@ include('header.php');
       else {
         echo 'Message box is empty';
       }
-      echo "<meta http-equiv='refresh' content='0'>";
     }
     else {
       echo 'Login or select a user to send message to';
     }
   }
 ?>
+
+<script src="libs/jquery-3.4.1.min.js"></script>
+  <script>
+    function load_message(){
+      var search = document.getElementById("search-bar").value;
+
+      if (search) {
+        $.post("funcs/message-check.php",
+        {
+          search: search
+        },
+
+        function(data, status){
+          $("div.chat_list").html(data);
+        }
+        );  
+      } 
+    }
+
+   /* function addhtml() { //testing adding message to message view after POST
+      var Nhtml = $("div.msg_history").html();
+
+      Nhtml = Nhtml.concat("<div class='outgoing_msg'><div class='sent_msg'><p>'.$message.'</p><span class='time_date'>'.$format_time.'    |    '.$format_date.'</span></div></div>");
+
+      alert(Nhtml);
+
+      $("div.msg_history").html(Nhtml);
+    }*/
+  </script>
 
 <?php include('footer.php'); ?>

@@ -1,11 +1,20 @@
 *{
-	margin: 0px; 
-	padding: 0px;
+	box-sizing: border-box;
 }
 
-#container{
+.tab-box {
+	width: 100%;
+}
+
+.Doctor-Patient-Tab {
+	padding-top: 15px;
+	height: 42px;
+}
+
+#container, .user {
 	border:1px solid black;
-	width:400px;
+	border-radius: 2px;
+	width:500px;
 	margin:0px auto;
 }
 
@@ -13,3 +22,45 @@
 	width: 92%;
 	padding: 3%;
 }
+
+.tab-button, .submit-button{
+	border-radius: 2px;
+	border: none;
+	background-color: #343a40;
+	color: white;
+}
+
+.tab-button {
+	width: 100px;
+}
+
+.input {
+	display: inline-block;
+	padding: 5px;	
+	width: 90%;
+	border: none;
+	margin-bottom: 10px;
+	background-color: #f1f1f1;
+}
+
+.submit-button {
+	width: 35%;
+	box-shadow: 0 8px 12px 0 rgba(0,0,0,0.2), 0 6px 15px 0 rgba(0,0,0,0.19); 
+	opacity: 0.6;
+	transition: 0.3s;
+}
+
+.submit-button:hover {
+	opacity: 1;
+}
+
+input[type="date"]:before {
+    content: attr(placeholder) !important;
+    color: #aaa;
+    margin-right: 0.5em;
+  }
+  
+input[type="date"]:focus:before,
+  input[type="date"]:valid:before {
+    content: "";
+  }

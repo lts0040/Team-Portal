@@ -12,7 +12,7 @@ if (!$page_title){
 <head>
 <title><?php echo $page_title;?></title>
 <!-- Bootstrap core CSS -->
-<link rel="stylesheet" href="/libs/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/libs/bootstrap-4.3.1-dist/css/bootstrap.min.css"> 
 <!-- JQUERY -->
 <script src="/libs/jquery-3.3.1.slim.min.js"></script>
 <!-- Popper.js -->

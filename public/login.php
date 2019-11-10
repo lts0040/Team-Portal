@@ -17,11 +17,11 @@ include('config.php');
 	<div align="center" id="container">
 		<form method="post">
 			<div id = "input_box">
-				<input type="text" placeholder="Username" id="user_name" name="Username" class="input" required /><br><br>
+				<input type="text" placeholder="Username" id="user_name" name="Username" class="input" required />
 
-				<input type="password" placeholder="Password" name="Password" class="input" 		   required/><br><br>
-				<a href="/register.php">Register Here</a><br><br>
-				<input type="submit" href="/index.php" id="login" name="login"/>
+				<input type="password" placeholder="Password" name="Password" class="input" 		   required/>
+				<a href="/register2.php">Register Here</a><br><br>
+				<input type="submit" value="Login" href="/index.php" class="submit-button" id="login" name="login"/>
 			</div>
 		</form>
 	</div>

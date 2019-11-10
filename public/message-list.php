@@ -1,4 +1,4 @@
-<div class="chat_list">
+<div class="chat_list" id="chat_list">
 
 <?php
 	$q = 'SELECT DISTINCT `from_user`, `to_user`, `message`, `timestamp` FROM `messages` WHERE `from_user` = "'.$_SESSION['username'].'" OR `to_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC';
@@ -23,7 +23,7 @@
 						?>	
 							<div class="chat_people" style="border-bottom: 1px solid #cdcdcd !important; padding-top: 5px; padding-bottom: 5px;">
 								<div class="chat_img"> <img src="https://ptetutorials.com/images/user-profile.png" alt="sunil"> </div>
-								<a href="?user=<?php echo $to_user ?>"
+								<a href="?user=<?php echo $to_user ?>">
 								    <span class="chat_ib">
 								      <h5><?php echo $to_user ?> <span class="chat_date"><?php echo $time ?></span></h5>
 								      <p><?php echo $message ?></p>
