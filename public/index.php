@@ -14,7 +14,7 @@ else if ($isPatient > 0)
 else
 	{include ('header.php');}
 
-include('config.php');
+//include('config.php');
 
 if(isset($_SESSION['username']))
 	echo 'Hello '.$_SESSION['username'];
