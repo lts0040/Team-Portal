@@ -7,7 +7,9 @@ $page_title = "DP Portal";
 
 $isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
 $isPatient = getPatientAuth();
-if (!empty($isDoctor))
+$isAdmin = getAdminAuth();
+
+if (!empty($isDoctor) || !empty($isAdmin) )
 	{include('header-for-Dr.php');}
 else if (!empty($isPatient))
 	{include ('header-for-Patient.php'); }
