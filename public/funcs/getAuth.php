@@ -2,44 +2,55 @@
 	//session_start();
 	//include('../config.php');
 	
-	if(!function_exists('getDoctorAuthID' 	)) {
+	if( !function_exists('getDoctorAuthID') ) {
 		function getDoctorAuthID() {
-			$isDoctor = 0;
+			$doctorAuth = array();
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
 				$sql = 'SELECT doctor_auth FROM `users` WHERE `username` = "'.$user_name.'" AND doctor_auth IS NOT NULL';
 				$sqlResult = mysqli_query($_SESSION['link'], $sql);
+			
+				$doctorAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM);
 				
-				if ( $doctorAuth= mysqli_fetch_assoc($sqlResult)) {
-				  
-					$isDoctor = $doctorAuth["doctor_auth"];
-				}
-				else{
-					$isDoctor = 0;
-				}
+				//echo "doctorAuth: ";
+				//foreach($doctorAuth as $id) { echo $id."<br>";}
 			}
-			return $isDoctor;
+			return $doctorAuth;
 		}
 	}  
 	
-	if(!function_exists('getPatientAuth' 	)) {
+	if( !function_exists('getPatientAuth') ) {
+		
 		function getPatientAuth() {
-			$isPatient = 0;
+			$patientAuth = array();
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
 				$sql = 'SELECT user_auth FROM `users` WHERE `username` = "'.$user_name.'" AND user_auth IS NOT NULL';
 				$sqlResult = mysqli_query($_SESSION['link'], $sql);
 				
-				if ( $patientAuth= mysqli_fetch_assoc($sqlResult)) {
-				   
-					$isPatient = $patientAuth["user_auth"];
-				}
-				else{
-					$isPatient = 0;
-				}
+				$patientAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM);
+				
 			}
-			return $isPatient;
+			return $patientAuth;
+		}
+	}  
+	
+	
+	if( !function_exists('getAdminAuth') ) {
+		
+		function getAdminAuth() {
+			$adminAuth = array();
+			if(isset($_SESSION['username'])) {
+				$user_name = $_SESSION['username']; 
+				//echo "Currently login as: " .$user_name."<br>";
+				$sql = 'SELECT admin_auth FROM `users` WHERE `username` = "'.$user_name.'" AND admin_auth IS NOT NULL';
+				$sqlResult = mysqli_query($_SESSION['link'], $sql);
+				
+				$adminAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM);
+				
+			}
+			return $adminAuth;
 		}
 	}  
