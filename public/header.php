@@ -37,7 +37,10 @@ if (!$page_title){
     </li>
 
     <li class="nav-item">
-      <?php 
+      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
+    </li>
+    <li class="nav-item" style="float:right !important;">
+		<?php 
         if(isset($_SESSION['username'])) {
           $q = 'SELECT `from_user`, `to_user` FROM `messages` WHERE `to_user` = "'.$_SESSION['username'].'" OR `from_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC LIMIT 1';
 
@@ -60,15 +63,14 @@ if (!$page_title){
               $_SESSION['to_user'] = $_SESSION['username'];
             }
           }
+		  
+		echo '<li class="nav-item" style="float:right !important;">
+			<a class="nav-link" href="/logout.php">Logout</a>
+			</li>';  
         }
       ?>
-      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
-    </li>
-    <li class="nav-item" style="float:right !important;">
       <a class="nav-link" href="/login.php">Login</a>
     </li>
-    <li class="nav-item" style="float:right !important;">
-      <a class="nav-link" href="/logout.php">Logout</a>
-    </li>
+    
   </ul>
 </nav>

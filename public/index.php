@@ -7,9 +7,9 @@ $page_title = "DP Portal";
 
 $isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
 $isPatient = getPatientAuth();
-if ($isDoctor > 0)
-	{include('header-for-Dr.php'); }
-else if ($isPatient > 0)
+if (!empty($isDoctor))
+	{include('header-for-Dr.php');}
+else if (!empty($isPatient))
 	{include ('header-for-Patient.php'); }
 else
 	{include ('header.php');}
@@ -17,9 +17,10 @@ else
 //include('config.php');
 
 if(isset($_SESSION['username']))
-	echo 'Hello '.$_SESSION['username'];
+	echo '<h1>Hello '.$_SESSION['username'].'! </h1>';
+echo '<h2>Welcome to Doctor Patient Portal</h2>';
 ?>
-<h1>Welcome to Doctor Patient Portal</h1>
+
 <p>This is the main text for the home page of the doctor patient portal!</p>
 
 <?php include('footer.php'); ?>

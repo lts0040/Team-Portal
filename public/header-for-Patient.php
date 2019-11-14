@@ -29,7 +29,7 @@ if (!$page_title){
       <a class="nav-link" href="/records.php">Records</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/medcications.php">Medications</a>
+      <a class="nav-link" href="/medications.php">Medications</a>
     </li>
 
     <!-- Dropdown
