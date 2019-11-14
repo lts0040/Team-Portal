@@ -12,37 +12,31 @@
 	<body>
 	
 	<?php include '../funcs/getAuth.php';
-		$isDoctor = getDoctorAuthID();
+		$doctor_auth = getDoctorAuthID(); //doctor_auth stores patients' ids of that doctor
 		
-		if($isDoctor == 0){
+		if( empty($doctor_auth) ){
 			echo 'Unauthorized to see this!';
 			return;
 		}
 		
-		$sql = "SELECT * FROM users WHERE user_auth IS NOT NULL;";
-		$result = mysqli_query($link, $sql);
-		$resultCheck = mysqli_num_rows($result);
+		echo " <h2 style=\"text-align:center\" >Patient List </h2>" ;
 		
-		if($resultCheck > 0){
-			echo " <h2 style=\"text-align:center\" >Patient List </h2>" ;
-			
-			while( $row = mysqli_fetch_assoc($result) ){
-				
-				$queryRecord = "SELECT r.record FROM records AS r JOIN users AS u ON u.uid = r.p_uid 
-									WHERE u.username = '".$row['username']."';" ;
+		foreach($doctor_auth as $item)	
+		{	
+			$ids = explode (",", $item); //parse ids between ,
+	
+			foreach($ids as $patientId)
+			{	$queryRecord = "SELECT u.username, r.record FROM records AS r JOIN users AS u ON u.uid = r.p_uid 
+									WHERE r.p_uid = '".$patientId."';" ;
 				
 				$r = mysqli_query($link, $queryRecord);
-				echo $row['username']  ;
 				
-				while( $record = mysqli_fetch_assoc($r) ){
-					echo ": &nbsp " . $record['record']. "<br>" ;
+				while($record = mysqli_fetch_assoc($r)){
+					echo $record['username'].": &nbsp " . $record['record']. "<br>" ;
 				}
-			}
+			}	
+			
 		}
-		else{
-			echo 'No users!';
-		}
-		
 		
 	?>
 	
