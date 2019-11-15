@@ -22,55 +22,5 @@ if (!$page_title){
 </head>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <!-- Brand -->
-  <a class="navbar-brand" href="/">DP Portal</a>
-
-  <!-- Links -->
-  <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="/appointments.php">Appointments</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/records.php">Records</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/medications.php">Medications</a>
-    </li>
-
-    <li class="nav-item">
-      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
-    </li>
-    <li class="nav-item" style="float:right !important;">
-		<?php 
-        if(isset($_SESSION['username'])) {
-          $q = 'SELECT `from_user`, `to_user` FROM `messages` WHERE `to_user` = "'.$_SESSION['username'].'" OR `from_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC LIMIT 1';
-
-          $r = mysqli_query($link, $q);
-
-          if($r) {
-            if(mysqli_num_rows($r) > 0) {
-              $value = mysqli_fetch_object($r);
-              $to_user = $value->to_user;
-              $from_user = $value->from_user;
-
-              if($to_user == $_SESSION['username']) {
-                $_SESSION['to_user'] = $from_user;
-              }
-              else {
-                $_SESSION['to_user'] = $to_user;
-              }
-            }
-            else {
-              $_SESSION['to_user'] = $_SESSION['username'];
-            }
-          }
-		  
-		echo '<li class="nav-item" style="float:right !important;">
-			<a class="nav-link" href="/logout.php">Logout</a>
-			</li>';  
-        }
-      ?>
-      <a class="nav-link" href="/login.php">Login</a>
-    </li>
-    
-  </ul>
+  <a class="navbar-brand" href="/">DP Portal</a>    
 </nav>

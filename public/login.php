@@ -20,7 +20,6 @@ include('config.php');
 				<input type="text" placeholder="Username" id="user_name" name="Username" class="input" required />
 
 				<input type="password" placeholder="Password" name="Password" class="input" 		   required/>
-				<a href="/register2.php">Register Here</a><br><br>
 				<input type="submit" value="Login" href="/index.php" class="submit-button" id="login" name="login"/>
 			</div>
 		</form>

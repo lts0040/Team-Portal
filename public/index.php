@@ -5,16 +5,18 @@ include ('config.php');
 
 $page_title = "DP Portal";
 
-$isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
-$isPatient = getPatientAuth();
+$hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
+$hasPatient = getPatientAuth();
 $isAdmin = getAdminAuth();
 
-if (!empty($isDoctor) || !empty($isAdmin) )
-	{include('header-for-Dr.php');}
-else if (!empty($isPatient))
-	{include ('header-for-Patient.php'); }
+if (!empty($hasDoctor))
+	{$_SESSION['header'] = 'header-for-Patient.php'; include($_SESSION['header']);}
+else if (!empty($hasPatient))
+	{$_SESSION['header'] = 'header-for-Dr.php'; include($_SESSION['header']);}
+else if (!empty($isAdmin))
+	{$_SESSION['header'] = 'header-for-Admin.php'; include($_SESSION['header']);}
 else
-	{include ('header.php');}
+	{$_SESSION['header'] = 'header.php'; include($_SESSION['header']); header("location:login.php"); }
 
 //include('config.php');
 

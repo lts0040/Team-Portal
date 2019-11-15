@@ -1,7 +1,7 @@
 <?php
 $page_title = "DP Portal";
-
-include('header.php'); 
+session_start();
+include($_SESSION['header']); 
 
 if(!isset($_SESSION['username'])) {
   header("location:login.php");
@@ -126,8 +126,8 @@ if(!isset($_SESSION['username'])) {
           $from_user = $_SESSION['username'];
           $to_user = $_GET['user'];
           $message = $_POST['message_box'];
-          $format_time = date('g:i A', time());
-          $format_date = date('m/d/y', time());
+          $format_time = date('g:i A', strtotime('-1 hours', time()));
+          $format_date = date('m/d/y', strtotime('-1 hours', time()));
 
           $q = 'INSERT INTO `messages` (`from_user`, `to_user`, `timestamp`, `message`)
                   VALUES ("'.$from_user.'","'.$to_user.'",NOW(),"'.$message.'")';

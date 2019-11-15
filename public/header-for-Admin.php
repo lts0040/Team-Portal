@@ -27,27 +27,8 @@ if(session_status() == PHP_SESSION_NONE) {
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" href="/appointments.php">Appointments</a>
+      <a class="nav-link" href="/register2.php">Create Account</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/records.php">Records</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/medications.php">Medications</a>
-    </li>
-
-    <!-- Dropdown
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-        dropdown 1
-      </a>
-      <div class="dropdown-menu">
-        <a class="dropdown-item" href="#d1">Link 1</a>
-        <a class="dropdown-item" href="#d2">Link 2</a>
-        <a class="dropdown-item" href="#d3">Link 3</a>
-      </div>
-    </li>-->
-	
     <li class="nav-item">
       <?php 
         if(isset($_SESSION['username'])) {
@@ -73,8 +54,8 @@ if(session_status() == PHP_SESSION_NONE) {
             }
           } 
         }
-        ?>
-      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user']; ?>">Messages</a>
+      ?>
+      <a class="nav-link" href="/messaging.php?user=<?php echo $_SESSION['to_user'];?>">Messages</a>
     </li>
     
     <li class="nav-item" style="float:right !important;">

@@ -3,7 +3,7 @@
 	$page_title = "DP Portal";
 	include('../config.php');
 	include('../funcs/getAuth.php');
-	include('../header-for-Dr.php'); 
+	include('../'.$_SESSION['header'].''); 
 ?>
 <html>
 	<head>
@@ -12,7 +12,7 @@
 	<body>
 	
 	<?php include '../funcs/getAuth.php';
-		$doctor_auth = getDoctorAuthID(); //doctor_auth stores patients' ids of that doctor
+		$doctor_auth = getPatientAuth(); //doctor_auth stores patients' ids of that doctor
 		$admin_auth = getAdminAuth();
 		if( !empty($doctor_auth) ){		
 			echo " <h2 style=\"text-align:center\" >Patient List </h2>" ;

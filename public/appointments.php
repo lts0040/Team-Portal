@@ -1,13 +1,12 @@
 <?php
 include ('funcs/getAuth.php'); 
 include ('config.php'); 
-
+session_start();
 $page_title = "DP Portal";
+include ($_SESSION['header']);
 
-$isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
-$isPatient = getPatientAuth();
-if ($isDoctor > 0)
-	{include('header-for-Dr.php'); 
+if ($_SESSION['header'] == 'header-for-Dr.php')
+	{ 
         $sql = "SELECT * FROM users WHERE user_auth IS NOT NULL;";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
@@ -33,16 +32,16 @@ if ($isDoctor > 0)
 				
 				$r = mysqli_query($link, $queryRecord);
 				
-                    
-				while( $record = mysqli_fetch_assoc($r) ){
-                    echo '<tr>';
-                    echo '<th scope="row">' . $row['username'] . '</th>';
-                    echo '<td>' . $record['date_start'] . '</td>';
-                    echo '<td>' . $record['date_end'] . '</td>';
-                    echo '<td>' . $record['purpose'] . '</td>';
-                    echo '</tr>';
-				}
-                
+                if ($r) {
+                    while( $record = mysqli_fetch_assoc($r) ){
+                        echo '<tr>';
+                        echo '<th scope="row">' . $row['username'] . '</th>';
+                        echo '<td>' . $record['date_start'] . '</td>';
+                        echo '<td>' . $record['date_end'] . '</td>';
+                        echo '<td>' . $record['purpose'] . '</td>';
+                        echo '</tr>';
+                    }   
+                }       
 			}
             echo '</tbody>';
             echo '</table>';
@@ -53,8 +52,8 @@ if ($isDoctor > 0)
             
 		}
 }
-else if ($isPatient > 0)
-	{include ('header-for-Patient.php'); 
+else if ($_SESSION['header'] == 'header-for-Patient.php')
+	{
     $queryRecord = "SELECT m.med_amount, m.med_name, m.med_time FROM medications AS m JOIN users AS u ON u.uid = m.p_uid 
 									WHERE u.username = '".$_SESSION['username']."';" ;
 				
@@ -83,7 +82,7 @@ else if ($isPatient > 0)
     echo '<br>';
 }
 else
-	{include ('header.php');
+	{
     echo "<p>Need to login in order to view medications!</p>";
 }
 

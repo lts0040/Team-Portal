@@ -1,11 +1,13 @@
 <?php
 
 $page_title = "DP Portal";
-
+if(session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 error_reporting(-1);
 ini_set('display_errors', 'true');
 
-include('header.php'); 
+include('header-for-Admin.php'); 
 include('config.php');
 ?>
 
@@ -78,7 +80,26 @@ include('config.php');
 
 				<input type="email" placeholder="Email" id="email" name="email" class="input" required />
 
-				<input type="text" placeholder="User auth" id="u_auth" name="u_auth" class="input" />
+				<select multiple="multiple" placeholder="User auth" name="u_auth" class="input">
+					<?php
+						$query = 'SELECT username FROM users WHERE doctor_auth IS NOT NULL';
+
+						$r = mysqli_query($link, $query);
+
+						if($r) {
+							while($row = mysqli_fetch_assoc($r)) {
+								$doctor = $row['username'];
+
+								?>
+									<option><?php echo $doctor ?></option>
+								<?php
+							}
+						}
+						else {
+
+						}
+					?>
+				</select>
 
 				<input type="submit" class="submit-button" href="/index.php" id="register" name="register"/>
 			</div>
@@ -109,7 +130,26 @@ include('config.php');
 
 				<input type="email" placeholder="Email" id="email_2" name="email" class="input" required />
 
-				<input type="text" placeholder="Doctor auth" id="d_auth" name="d_auth" class="input" />
+				<select multiple="multiple" id="myMulti" placeholder="Doctor auth" name="d_auth" class="input">
+					<?php
+						$query = 'SELECT username FROM users WHERE user_auth IS NOT NULL AND user_auth <> ""';
+
+						$r = mysqli_query($link, $query);
+
+						if($r) {
+							while($row = mysqli_fetch_assoc($r)) {
+								$doctor = $row['username'];
+
+								?>
+									<option><?php echo $doctor ?></option>
+								<?php
+							}
+						}
+						else {
+
+						}
+					?>
+				</select>
 
 				<input type="text" placeholder="Allergies" id="allergies" name="allergies" class="input" />
 

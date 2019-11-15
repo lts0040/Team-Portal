@@ -45,7 +45,7 @@
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
-				$sql = 'SELECT admin_auth FROM `users` WHERE `username` = "'.$user_name.'" AND admin_auth IS NOT NULL';
+				$sql = 'SELECT admin_auth FROM `users` WHERE `username` = "'.$user_name.'" AND admin_auth IS NOT NULL AND admin_auth = 1';
 				$sqlResult = mysqli_query($_SESSION['link'], $sql);
 				
 				$adminAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM);
