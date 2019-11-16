@@ -4,20 +4,18 @@ include ('config.php');
 
 $page_title = "DP Portal";
 
-$isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
-$isPatient = getPatientAuth();
-if ($isDoctor > 0)
-	{include('header-for-Dr.php'); 
-        
-}
-else if ($isPatient > 0)
-	{include ('header-for-Patient.php'); 
-    echo "<p>Need doctor authorization to add records!</p>";
-}
+$hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
+$hasPatient = getPatientAuth();
+$isAdmin = getAdminAuth();
+
+if ($hasDoctor !== "false")
+	{$_SESSION['header'] = 'header-for-Dr.php'; include($_SESSION['header']);}
+else if ($hasPatient !== "false")
+	{$_SESSION['header'] = 'header-for-Patient.php'; include($_SESSION['header']);header("location:index.php"); }
+else if ($isAdmin == 1)
+	{$_SESSION['header'] = 'header-for-Admin.php'; include($_SESSION['header']);}
 else
-	{include ('header.php');
-    echo "<p>Need to login in order to view records!</p>";
-}
+	{$_SESSION['header'] = 'header.php'; include($_SESSION['header']); header("location:login.php"); }
 
 ?>
 
@@ -59,7 +57,7 @@ else
 </form>
 
 <?php 
-if ($_SERVER["REQUEST_METHOD"] == "POST" ){//&& $isDoctor > 0) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(isset($_POST)==true && empty($_POST)==false){
     echo "<p>Here is the data you inputted:</p>";
 	echo "<p>Username: " . $_POST['Username'] . "</p>";
@@ -67,7 +65,7 @@ if(isset($_POST)==true && empty($_POST)==false){
     echo "<p>Medication Amount: " . $_POST['Amount'] . "</p>";
     echo "<p>Medication Time: " . $_POST['Time'] . "</p>";
     
-    $sql_statement = "INSERT INTO medications (d_uid,p_uid,med_amount,med_name,med_time) VALUES(1," . $_POST['Username'] . ",'" . $_POST['Amount'] . "','" . $_POST['Name'] ."','". $_POST['Time'] . "');";
+    $sql_statement = "INSERT INTO medications (d_username,p_username,med_amount,med_name,med_time) VALUES('" . $_SESSION['username'] . "','" . $_POST['Username'] . "','" . $_POST['Amount'] . "','" . $_POST['Name'] ."','". $_POST['Time'] . "');";
     if (!mysqli_query($link, $sql_statement)) {
         die('Error: ' . mysql_error());
     }

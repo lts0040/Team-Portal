@@ -8,7 +8,7 @@ include ($_SESSION['header']);
 
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{
-        $sql = "SELECT * FROM users WHERE user_auth IS NOT NULL;";
+        $sql = "SELECT * FROM users WHERE user_auth LIKE '%[" . $_SESSION['username'] . ",%' OR user_auth LIKE '%," . $_SESSION['username'] . ",%' OR  user_auth LIKE '%," . $_SESSION['username'] . "]%' OR user_auth LIKE '%[" . $_SESSION['username'] . "]%';";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		
@@ -17,8 +17,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT m.med_amount, m.med_name, m.med_time FROM medications AS m JOIN users AS u ON u.uid = m.p_uid 
-									WHERE u.username = '".$row['username']."';" ;
+				$queryRecord = "SELECT med_amount, med_name, med_time FROM medications WHERE p_username = '".$row['username']."';" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 				echo "<h3>Medication for: " . $row['username'] . "</h3>";
@@ -51,8 +50,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 }
 else if ($_SESSION['header'] == 'header-for-Patient.php')
 	{
-    $queryRecord = "SELECT m.med_amount, m.med_name, m.med_time FROM medications AS m JOIN users AS u ON u.uid = m.p_uid 
-									WHERE u.username = '".$_SESSION['username']."';" ;
+    $queryRecord = "SELECT med_amount, med_name, med_time FROM medications WHERE p_username = '".$_SESSION['username']."';" ;
 				
     $r = mysqli_query($link, $queryRecord);
     echo '<table class="table">';

@@ -20,7 +20,7 @@ include('config.php');
 	<div class="tab-box">
 		<div class="Doctor-Patient-Tab" align="center">
 		  <button class="tab-button" id="doctor-button" onclick="changehdr('doctor')">Doctor</button>
-		  <button class="tab-button" id="patient-button" onclick="changehdr('patient')">Paitent</button>
+		  <button class="tab-button" id="patient-button" onclick="changehdr('patient')">Patient</button>
 		  <button class="tab-button" id="patient-button" onclick="changehdr('admin')">Admin</button>
 		</div>
 	</div>
@@ -80,9 +80,9 @@ include('config.php');
 
 				<input type="email" placeholder="Email" id="email" name="email" class="input" required />
 
-				<select multiple="multiple" placeholder="User auth" name="u_auth" class="input">
+				<select multiple="multiple" placeholder="Doctor auth" name="d_auth[]" class="input">
 					<?php
-						$query = 'SELECT username FROM users WHERE doctor_auth IS NOT NULL';
+						$query = 'SELECT username FROM users WHERE user_auth IS NOT NULL AND user_auth <> ""';
 
 						$r = mysqli_query($link, $query);
 
@@ -130,9 +130,9 @@ include('config.php');
 
 				<input type="email" placeholder="Email" id="email_2" name="email" class="input" required />
 
-				<select multiple="multiple" id="myMulti" placeholder="Doctor auth" name="d_auth" class="input">
+				<select multiple="multiple" id="myMulti" placeholder="User auth" name="u_auth[]" class="input">
 					<?php
-						$query = 'SELECT username FROM users WHERE user_auth IS NOT NULL AND user_auth <> ""';
+						$query = 'SELECT username FROM users WHERE doctor_auth IS NOT NULL';
 
 						$r = mysqli_query($link, $query);
 
@@ -193,15 +193,33 @@ include('config.php');
 			$email = isset($_POST['email']) ? $_POST['email'] : '';
 
 			if (isset($_POST['u_auth'])) {
+                $concatusers = "";
+                foreach ($_POST['u_auth'] as $subuser) {
+                    if ($concatusers == "") {
+                        $concatusers .= "[" . $subuser . ",";
+                    }
+                    else {
+                        $concatusers .= $subuser . ",";
+                    }
+                }
 				$auth = isset($_POST['u_auth']) ? $_POST['u_auth'] : '';
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `user_auth`)
-					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".$auth."')";
+					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".substr($concatusers,0,-1)."]')";
 			}
 
 			else if (isset($_POST['d_auth'])) {
+                $concatusers = "";
+                foreach ($_POST['d_auth'] as $subuser) {
+                    if ($concatusers == "") {
+                        $concatusers .= "[" . $subuser . ",";
+                    }
+                    else {
+                        $concatusers .= $subuser . ",";
+                    }
+                }
 				$auth = isset($_POST['d_auth']) ? $_POST['d_auth'] : '';
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `doctor_auth`)
-					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".$auth."')";
+					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".substr($concatusers,0,-1)."]')";
 			}
 
 			else {

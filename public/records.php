@@ -8,7 +8,7 @@ include ($_SESSION['header']);
 
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{ 
-        $sql = "SELECT * FROM users WHERE user_auth IS NOT NULL;";
+        $sql = "SELECT * FROM users WHERE user_auth LIKE '%[" . $_SESSION['username'] . ",%' OR user_auth LIKE '%," . $_SESSION['username'] . ",%' OR  user_auth LIKE '%," . $_SESSION['username'] . "]%' OR user_auth LIKE '%[" . $_SESSION['username'] . "]%';";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		
@@ -17,8 +17,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT r.record, r.timestamp FROM records AS r JOIN users AS u ON u.uid = r.p_uid 
-									WHERE u.username = '".$row['username']."';" ;
+				$queryRecord = "SELECT record, timestamp FROM records WHERE p_username = '".$row['username']."';" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 
@@ -61,8 +60,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 }
 else if ($_SESSION['header'] == 'header-for-Patient.php')
 	{
-    $queryRecord = "SELECT r.record, r.timestamp FROM records AS r JOIN users AS u ON u.uid = r.p_uid 
-									WHERE u.username = '".$_SESSION['username']."';" ;
+    $queryRecord = "SELECT record, timestamp FROM records WHERE p_username = '".$_SESSION['username']."';" ;
 				
     $r = mysqli_query($link, $queryRecord);
     

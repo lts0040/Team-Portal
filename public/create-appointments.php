@@ -4,20 +4,18 @@ include ('config.php');
 
 $page_title = "DP Portal";
 
-$isDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
-$isPatient = getPatientAuth();
-if ($isDoctor > 0)
-	{include('header-for-Dr.php');
+$hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
+$hasPatient = getPatientAuth();
+$isAdmin = getAdminAuth();
 
-}
-else if ($isPatient > 0)
-	{include ('header-for-Patient.php');
-    echo "<p>Need doctor authorization to add records!</p>";
-}
+if ($hasDoctor !== "false")
+	{$_SESSION['header'] = 'header-for-Dr.php'; include($_SESSION['header']);}
+else if ($hasPatient !== "false")
+	{$_SESSION['header'] = 'header-for-Patient.php'; include($_SESSION['header']);header("location:index.php"); }
+else if ($isAdmin == 1)
+	{$_SESSION['header'] = 'header-for-Admin.php'; include($_SESSION['header']);}
 else
-	{include ('header.php');
-    echo "<p>Need to login in order to view records!</p>";
-}
+	{$_SESSION['header'] = 'header.php'; include($_SESSION['header']); header("location:login.php"); }
 
 ?>
 
@@ -57,7 +55,7 @@ else
 <input type="submit" name="submit" value="Submit" id="submitForm">
 </form>
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" ){//&& $isDoctor > 0) {
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(isset($_POST)==true && empty($_POST)==false){
     echo "<p>Here is the data you inputted:</p>";
 	echo "<p>Username: " . $_POST['Username'] . "</p>";
@@ -65,7 +63,7 @@ if(isset($_POST)==true && empty($_POST)==false){
     echo "<p>Time end: " . $_POST['time_end'] . "</p>";
     echo "<p>Purpose: " . $_POST['purpose'] . "</p>";
 
-    $sql_statement = "INSERT INTO appointments (p_uid,d_uid,date_start,date_end,purpose) VALUES (" . $_POST['Username'] . ",1,'" . $_POST['time_start'] . "','" . $_POST['time_end'] . "','" . $_POST['purpose'] . "');";
+    $sql_statement = "INSERT INTO appointments (d_username,p_username,date_start,date_end,purpose) VALUES('" . $_SESSION['username'] . "','" . $_POST['Username'] . "','" . $_POST['time_start'] . "','" . $_POST['time_end'] . "','" . $_POST['purpose'] . "');";
     
     if (!mysqli_query($link, $sql_statement)) {
         die('Error: ' . mysql_error());

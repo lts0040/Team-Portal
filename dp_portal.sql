@@ -28,8 +28,8 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `appointments` (
   `a_uid` int(11) NOT NULL,
-  `p_uid` int(11) DEFAULT NULL,
-  `d_uid` int(11) DEFAULT NULL,
+  `p_username` text,
+  `d_username` text,
   `date_start` datetime DEFAULT NULL,
   `date_end` datetime DEFAULT NULL,
   `purpose` text,
@@ -44,8 +44,8 @@ CREATE TABLE `appointments` (
 
 CREATE TABLE `medications` (
   `m_uid` int(11) NOT NULL,
-  `p_uid` int(11) DEFAULT NULL,
-  `d_uid` int(11) DEFAULT NULL,
+  `p_username` text,
+  `d_username` text,
   `med_name` text,
   `med_amount` text,
   `med_time` text
@@ -88,8 +88,8 @@ CREATE TABLE `pharmacies` (
 
 CREATE TABLE `records` (
   `r_uid` int(11) NOT NULL,
-  `p_uid` int(11) DEFAULT NULL,
-  `d_uid` int(11) DEFAULT NULL,
+  `p_username` text,
+  `d_username` text,
   `timestamp` datetime DEFAULT NULL,
   `record` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

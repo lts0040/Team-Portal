@@ -1,1 +1,1 @@
-<p> This is the footer from footer.php!</p>
+<p>This website was made for CSCE 3444 by: Anthony Nguyen, Luke Simpson, Natalie Tran, Ryan Vo</p>
