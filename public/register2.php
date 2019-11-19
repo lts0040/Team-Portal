@@ -191,35 +191,24 @@ include('config.php');
 			$phone = isset($_POST['phone']) ? $_POST['phone'] : '';
 			$gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 			$email = isset($_POST['email']) ? $_POST['email'] : '';
-
+            $usersarr = array();
 			if (isset($_POST['u_auth'])) {
-                $concatusers = "";
                 foreach ($_POST['u_auth'] as $subuser) {
-                    if ($concatusers == "") {
-                        $concatusers .= "[" . $subuser . ",";
-                    }
-                    else {
-                        $concatusers .= $subuser . ",";
-                    }
+                    array_push($usersarr,$subuser);
                 }
 				$auth = isset($_POST['u_auth']) ? $_POST['u_auth'] : '';
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `user_auth`)
-					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".substr($concatusers,0,-1)."]')";
+					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".json_encode($usersarr)."')";
 			}
 
 			else if (isset($_POST['d_auth'])) {
                 $concatusers = "";
                 foreach ($_POST['d_auth'] as $subuser) {
-                    if ($concatusers == "") {
-                        $concatusers .= "[" . $subuser . ",";
-                    }
-                    else {
-                        $concatusers .= $subuser . ",";
-                    }
+                    array_push($usersarr,$subuser);
                 }
 				$auth = isset($_POST['d_auth']) ? $_POST['d_auth'] : '';
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `doctor_auth`)
-					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".substr($concatusers,0,-1)."]')";
+					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".json_encode($usersarr)."')";
 			}
 
 			else {
