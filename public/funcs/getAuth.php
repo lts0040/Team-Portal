@@ -11,10 +11,10 @@
 				$sqlResult = mysqli_query($_SESSION['link'], $sql);
                 $rowcount=mysqli_num_rows($sqlResult);
                 if ($rowcount > 0) {
-                    $doctorAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM)[0];
+                    $doctorAuth= json_decode(mysqli_fetch_array($sqlResult,MYSQLI_NUM)[0]);
                 }
                 else {
-                    $doctorAuth = "false";
+                    $doctorAuth = false;
                 }				
 				
 			}
@@ -32,10 +32,10 @@
 				$sqlResult = mysqli_query($_SESSION['link'], $sql);
                 $rowcount=mysqli_num_rows($sqlResult);
                 if ($rowcount > 0) {
-                    $userAuth= mysqli_fetch_array($sqlResult,MYSQLI_NUM)[0];
+                    $userAuth= json_decode(mysqli_fetch_array($sqlResult,MYSQLI_NUM)[0]);
                 }
                 else {
-                    $userAuth = "false";
+                    $userAuth = false;
                 }				
 				
 			}
