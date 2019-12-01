@@ -1,6 +1,4 @@
 <?php
-include ('funcs/getAuth.php'); 
-include ('config.php'); 
 session_start();
 $page_title = "DP Portal";
 
@@ -8,25 +6,25 @@ include ($_SESSION['header']);
 
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{ 
-        $sql = "SELECT * FROM users WHERE user_auth LIKE '%[" . $_SESSION['username'] . ",%' OR user_auth LIKE '%," . $_SESSION['username'] . ",%' OR  user_auth LIKE '%," . $_SESSION['username'] . "]%' OR user_auth LIKE '%[" . $_SESSION['username'] . "]%';";
+        $sql = "SELECT * FROM users WHERE user_auth LIKE '%" . '"' . $_SESSION['username'] . '"' . "%';";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		
 		if($resultCheck > 0){
-			echo " <h2 style=\"text-align:center\" >Patient List </h2>" ;
+			echo " <h2 style=\"text-align:center\" >Patient Records </h2>" ;
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT record, timestamp FROM records WHERE p_username = '".$row['username']."';" ;
+				$queryRecord = "SELECT record, d_username, timestamp FROM records WHERE p_username = '".$row['username']."' ORDER BY p_username ASC, timestamp DESC;" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 
                 if($r) {
                     if ($r->num_rows != 0) {
-        				echo "<h3>Record for: " . $row['username'] . "</h3>";
-                        echo "<h3>Date: " . $row['timestamp'] . "</h3>";
-    				
+        				echo "<h3>Records for: " . $row['username'] . "</h3>";
                         while( $record = mysqli_fetch_assoc($r) ){
+                            echo "<h3>Doctor: " . $record['d_username'] . "</h3>";
+                            echo "<h3>Date: " . $record['timestamp'] . "</h3>";
                             echo '<table class="table">';
                             echo '<thead>';
                             echo '<tr>';
@@ -60,13 +58,14 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 }
 else if ($_SESSION['header'] == 'header-for-Patient.php')
 	{
-    $queryRecord = "SELECT record, timestamp FROM records WHERE p_username = '".$_SESSION['username']."';" ;
+    $queryRecord = "SELECT record, d_username, timestamp FROM records WHERE p_username = '".$_SESSION['username']."' ORDER BY timestamp DESC;" ;
 				
     $r = mysqli_query($link, $queryRecord);
     
     if ($r) {
         if ($r->num_rows != 0) {
             while( $record = mysqli_fetch_assoc($r) ){
+                echo "<h3>Date: " . $record['timestamp'] . "</h3>";
                 echo "<h3>Date: " . $record['timestamp'] . "</h3>";
                 echo '<table class="table">';
                 echo '<thead>';
