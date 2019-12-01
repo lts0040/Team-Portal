@@ -1,13 +1,10 @@
 <?php
-include ('funcs/getAuth.php'); 
-include ('config.php'); 
 session_start();
 $page_title = "DP Portal";
 include ($_SESSION['header']);
-
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{
-        $sql = "SELECT * FROM users WHERE user_auth LIKE '%[" . $_SESSION['username'] . ",%' OR user_auth LIKE '%," . $_SESSION['username'] . ",%' OR  user_auth LIKE '%," . $_SESSION['username'] . "]%' OR user_auth LIKE '%[" . $_SESSION['username'] . "]%';";
+        $sql = "SELECT * FROM users WHERE user_auth LIKE '%" . '"' . $_SESSION['username'] . '"' . "%';";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
         
@@ -28,7 +25,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT date_start, date_end, purpose FROM appointments WHERE p_username = '".$row['username']."';" ;
+				$queryRecord = "SELECT date_start, date_end, purpose FROM appointments WHERE p_username = '".$row['username']."' AND d_username='".$_SESSION[username]."' AND date_start>=NOW() ORDER BY date_start ASC;" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 				
@@ -54,7 +51,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 }
 else if ($_SESSION['header'] == 'header-for-Patient.php')
 	{
-    $queryRecord = "SELECT d_username, date_start, date_end, purpose FROM appointments WHERE p_username ='".$_SESSION['username']."';" ;
+    $queryRecord = "SELECT d_username, date_start, date_end, purpose FROM appointments WHERE p_username ='".$_SESSION['username']."' AND date_start>=NOW() ORDER BY date_start ASC;" ;
 				
     $r = mysqli_query($link, $queryRecord);
     echo '<table class="table">';
