@@ -183,6 +183,14 @@ include('config.php');
             if(isset($_POST['d_auth'])) {
             	foreach ($_POST['d_auth'] as $subuser) {
 		            array_push($usersarr,$subuser);
+
+		            $query2 = "UPDATE `users` SET `user_auth` = concat('[', concat(TRIM(']' FROM TRIM('[' FROM `user_auth`)),',',"."'".'"'.$user_name.'"'."'"."), ']') WHERE `username` = '".$subuser."'";
+
+					$r = mysqli_query($link, $query2);
+
+					if(!$r){
+						echo 'Update user_auth error';
+					}	
 		        }
             }
 		
@@ -210,6 +218,14 @@ include('config.php');
             if(isset($_POST['u_auth'])) {
             	foreach ($_POST['u_auth'] as $subuser) {
 	                array_push($usersarr,$subuser);
+
+	                $query2 = "UPDATE `users` SET `doctor_auth` = concat('[', concat(TRIM(']' FROM TRIM('[' FROM `doctor_auth`)),',',"."'".'"'.$user_name.'"'."'"."), ']') WHERE `username` = '".$subuser."'";	
+
+					$r = mysqli_query($link, $query2);
+
+					if(!$r){
+						echo 'Update doctor_auth error';
+					}
 	            }	
             }
 
