@@ -4,6 +4,7 @@
 	
 	if( !function_exists('getDoctorAuthID') ) {
 		function getDoctorAuthID() {
+			$doctorAuth = 0;
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
@@ -25,6 +26,7 @@
 	if( !function_exists('getPatientAuth') ) {
 		
 		function getPatientAuth() {
+			$userAuth = 0;
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
@@ -47,6 +49,7 @@
 	if( !function_exists('getAdminAuth') ) {
 		
 		function getAdminAuth() {
+			$adminAuth = 0;
 			if(isset($_SESSION['username'])) {
 				$user_name = $_SESSION['username']; 
 				//echo "Currently login as: " .$user_name."<br>";
