@@ -1,9 +1,8 @@
+  
 <?php
 session_start();
 $page_title = "DP Portal";
-
 include ($_SESSION['header']);
-
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{
         $sql = "SELECT * FROM users WHERE user_auth LIKE '%" . '"' . $_SESSION['username'] . '"' . "%';";
@@ -76,6 +75,5 @@ else
 	{
     echo "<p>Need to login in order to view medications!</p>";
 }
-
 include ('footer.php');
 ?>

@@ -31,13 +31,11 @@ if(!isset($_SESSION['username'])) {
 
       <datalist id="user"></datalist>
 
-      <!--<input type="text" class="Message-Input" name="subject" placeholder="subject"></input>-->
-
       <textarea class="Message-Input" name="message" style="height: 150px" placeholder="write your message"></textarea><br><br>
 
       <button onclick="document.getElementById('New-Message').style.display='none'">Cancel</button>
 
-      <input type="submit" value="send" name="Send"/>
+      <input type="submit" value="send" name="send"/>
 
     </form>
   </p>
@@ -46,7 +44,7 @@ if(!isset($_SESSION['username'])) {
 
 <?php
   if(isset($_POST['send'])){
-    $receiver_user = $_GET['user_name'];
+    $receiver_user = $_POST['user_name'];
 
     $q = 'SELECT uid FROM `users` WHERE `username` = "'.$receiver_user.'"';
     $r = mysqli_query($link, $q);
@@ -60,7 +58,7 @@ if(!isset($_SESSION['username'])) {
         $from_user = $_SESSION['username'];
         $message = $_POST['message'];
 
-        $q = 'INSERT INTO `messages` (`from_user`, `to_user`, `timestamp`, `subject`, `message`)
+        $q = 'INSERT INTO `messages` (`from_user`, `to_user`, `timestamp`, `message`)
               VALUES ("'.$from_user.'","'.$receiver_user.'",NOW(),"'.$message.'")';
 
         $r = mysqli_query($link, $q);
@@ -107,7 +105,6 @@ if(!isset($_SESSION['username'])) {
         </div>
       </div>
       <div class="mesgs">
-        <p>Messages with <?php echo $_GET['user']; ?>:</p>
         <?php
           require_once("message-view.php");
         ?>

@@ -1,9 +1,10 @@
 <?php
+if(session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 $page_title = "DP Portal";
-
 error_reporting(-1);
 ini_set('display_errors', 'true');
-
 include('header.php'); 
 include('config.php');
 ?>
@@ -28,11 +29,8 @@ include('config.php');
 	<?php if(isset($_POST['login'])) {
 		$user_name = $_POST['Username'];
 		$Password = $_POST['Password'];
-
 		$query = 'SELECT uid FROM `users` where `username` = "'.$user_name.'" AND `password` = "'.$Password.'"';
-
 		$r = mysqli_query($link, $query);
-
 		if($r){
 			if(mysqli_num_rows($r) > 0) {
 				$_SESSION['username'] = $user_name;
