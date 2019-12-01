@@ -1,12 +1,5 @@
 <?php
 include ('funcs/getAuth.php'); 
-include ('config.php'); 
-
-$page_title = "DP Portal";
-
-$hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
-$hasPatient = getPatientAuth();
-$isAdmin = getAdminAuth();
 
 if ($hasDoctor !== "false")
 	{$_SESSION['header'] = 'header-for-Dr.php'; include($_SESSION['header']);}
@@ -16,6 +9,13 @@ else if ($isAdmin == 1)
 	{$_SESSION['header'] = 'header-for-Admin.php'; include($_SESSION['header']);}
 else
 	{$_SESSION['header'] = 'header.php'; include($_SESSION['header']); header("location:login.php"); }
+
+$page_title = "DP Portal";
+
+$hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
+$hasPatient = getPatientAuth();
+$isAdmin = getAdminAuth();
+
 
 ?>
 
@@ -29,7 +29,26 @@ else
   <tr>
     <td>
     <label>Username</label>
-    <input type="text" name="Username">
+    <select id="selectUser" name="Username">
+        <?php
+            $query = 'SELECT username FROM users WHERE user_auth IS NOT NULL';
+
+            $r = mysqli_query($link, $query);
+
+            if($r) {
+                while($row = mysqli_fetch_assoc($r)) {
+                    $doctor = $row['username'];
+
+                    ?>
+                        <option><?php echo $doctor; ?></option>
+                    <?php
+                }
+            }
+            else {
+
+            }
+        ?>
+    </select>
     </td>
   </tr>
   <tr>

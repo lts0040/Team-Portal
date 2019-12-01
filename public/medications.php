@@ -1,6 +1,4 @@
 <?php
-include ('funcs/getAuth.php'); 
-include ('config.php'); 
 session_start();
 $page_title = "DP Portal";
 
@@ -8,7 +6,7 @@ include ($_SESSION['header']);
 
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{
-        $sql = "SELECT * FROM users WHERE user_auth LIKE '%[" . $_SESSION['username'] . ",%' OR user_auth LIKE '%," . $_SESSION['username'] . ",%' OR  user_auth LIKE '%," . $_SESSION['username'] . "]%' OR user_auth LIKE '%[" . $_SESSION['username'] . "]%';";
+        $sql = "SELECT * FROM users WHERE user_auth LIKE '%" . '"' . $_SESSION['username'] . '"' . "%';";
 		$result = mysqli_query($link, $sql);
 		$resultCheck = mysqli_num_rows($result);
 		
@@ -17,7 +15,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT med_amount, med_name, med_time FROM medications WHERE p_username = '".$row['username']."';" ;
+				$queryRecord = "SELECT med_amount, med_name, med_time FROM medications WHERE p_username = '".$row['username']."' ORDER BY p_username ASC;" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 				echo "<h3>Medication for: " . $row['username'] . "</h3>";
