@@ -30,7 +30,7 @@ else
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-4">Welcome to the Doctor Patient Portal!</h1>
-          <p>This is a website designed to manage the all of the doctor and patient functions for a small clinic!</p>
+          <p>Hello <?php echo $_SESSION['username']?>, this is a website designed to manage the all of the doctor and patient functions for a small clinic!</p>
           <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Test Button &raquo;</a></p>-->
         </div>
       </div>
