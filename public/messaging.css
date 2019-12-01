@@ -1,3 +1,7 @@
+h4 {
+  color: #343a40 !important;
+}
+
 .container{max-width:1170px; margin:auto; padding-top: 80px;}
 
 img{ max-width:100%;}
@@ -19,7 +23,7 @@ img{ max-width:100%;}
 
 .text-center{}
 
-.recent_heading {float: left; width:40%;}
+.recent_heading {float: left; width:40%; color: #343a40 !important;}
 
 .srch_bar {
   display: inline-block;
@@ -114,12 +118,13 @@ img{ max-width:100%;}
 }
 
  .sent_msg p {
-  background: #05728f none repeat scroll 0 0;
+  background: #343a40 none repeat scroll 0 0;
   border-radius: 3px;
   font-size: 14px;
   margin: 0; color:#fff;
   padding: 5px 10px 5px 12px;
   width:100%;
+  opacity: 0.85;
 }
 
 .outgoing_msg{ overflow:hidden; margin:26px 0 26px;}
@@ -141,7 +146,7 @@ img{ max-width:100%;}
 .type_msg {border-top: 1px solid #c4c4c4;position: relative; width: 100%;}
 
 .msg_send_btn {
-  background: #05728f none repeat scroll 0 0;
+  background: #343a40 none repeat scroll 0 0;
   border: medium none;
   border-radius: 50%;
   color: #fff;
@@ -152,6 +157,12 @@ img{ max-width:100%;}
   right: 0;
   top: 11px;
   width: 33px;
+  transition: 0.3s;
+  opacity: 0.85;
+}
+
+.msg_send_btn:hover {
+  opacity: 1.0;
 }
 
 .messaging { padding: 0 0 50px 0;}
@@ -162,12 +173,19 @@ img{ max-width:100%;}
 }
 
 .New-Button {
-  background-color: #05728f;
+  background-color: #343a40;
   color: white;
-  border-color: #05728f;
+  border: none;
+  border-color: #343a40;
   font-size: 18px;
   margin: auto;
   border-radius: 3px; 
+  transition: 0.3s;
+  opacity: 0.85;
+}
+
+.New-Button:hover {
+  opacity: 1.0;
 }
 
 .Button-Container {
@@ -189,7 +207,7 @@ img{ max-width:100%;}
 }
 
 .Message-Header, .Message-Footer {
-  background-color: #05728f;
+  background-color: #6c757d;
   margin: 0px;
   color: white;
   padding: 5px;

@@ -28,7 +28,6 @@
 									    <span class="chat_ib">
 									      <h5>'.$to_user.'<span class="chat_date">'.$time.'</span></h5>
 									      <p>'.$message.'</p>
-									      <p>poop</p>
 									    </span>
 									</a>
 								</div>';
@@ -48,7 +47,6 @@
 									    <span class="chat_ib">
 									      <h5>'.$from_user.' <span class="chat_date">'.$time.'</span></h5>
 									      <p>'.$message.'</p>
-									      <p>poop</p>
 									    </span>
 									</a>
 								</div>';

@@ -58,7 +58,7 @@ include('config.php');
 			<div id = "input_box">
 				<div id="checking" style="display: none;">Checking Username</div>
 
-				<input type="text" placeholder="Username" id="user_name" onkeyup="check_user()" 	   name="Username" class="input" required />
+				<input type="text" placeholder="Username" id="user_name" onkeyup="check_user(1)" 	   name="Username" class="input" required />
 					   
 				<input type="password" placeholder="Password" name="Password" class="input" 		   required/>
 
@@ -104,7 +104,7 @@ include('config.php');
 			<div id = "input_box">
 				<div id="checking" style="display: none;">Checking Username</div>
 
-				<input type="text" placeholder="Username" id="user_name_2" onkeyup="check_user()" 	   name="Username" class="input" required />
+				<input type="text" placeholder="Username" id="user_name_2" onkeyup="check_user(2)" 	   name="Username" class="input" required />
 					   
 				<input type="password" placeholder="Password" name="Password" class="input" 		   required/>
 
@@ -156,7 +156,7 @@ include('config.php');
 			<div id = "input_box">
 				<div id="checking" style="display: none;">Checking Username</div>
 
-				<input type="text" placeholder="Username" id="user_name_3" onkeyup="check_user()" 	   name="Username" class="input" required />
+				<input type="text" placeholder="Username" id="user_name_3" onkeyup="check_user(3)" 	   name="Username" class="input" required />
 					   
 				<input type="password" placeholder="Password" name="Password" class="input" 		   required/>
 
@@ -250,9 +250,25 @@ include('config.php');
 
 	<script src="libs/jquery-3.4.1.min.js"></script>
 	<script>
-		document.getElementById("register").disabled = true;
-		function check_user(){
-			var user_name = document.getElementById("user_name").value;
+		function check_user(type){
+			var user_name;
+			var element;
+
+			if(type == 1) {
+				element = 'register';
+				document.getElementById(element).disabled = true;
+				user_name = document.getElementById("user_name").value;
+			}
+			else if(type == 2) {
+				element = 'register_2';	
+				document.getElementById(element).disabled = true;
+				user_name = document.getElementById("user_name_2").value;
+			}
+			else if(type == 3) {
+				element = 'register_3';
+				document.getElementById(element).disabled = true;	
+				user_name = document.getElementById("user_name_3").value;
+			}
 			if (user_name) {
 				$.post("funcs/user_check.php",
 				{
@@ -260,12 +276,12 @@ include('config.php');
 				},
 				function(data, status){
 					if(data == '<p style="color:red">User already exists</p>') {
-						document.getElementById("register").disabled = true;
+						document.getElementById(element).disabled = true;
 					}
 					else{
-						document.getElementById("register").disabled = false;	
+						document.getElementById(element).disabled = false;	
 					}
-					document.getElementById("checking").style.display = "inline-block";
+					document.getElementById("checking").style.display = "block";
 					document.getElementById("checking").innerHTML = data;
 				}
 				);	

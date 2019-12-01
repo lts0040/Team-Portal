@@ -5,7 +5,7 @@
 		$r = mysqli_query($link, $q);
 		if($r){
 			if(mysqli_num_rows($r) > 0){
-				echo '<p style="color:read">User already exists</p>';
+				echo '<p style="color:red">User already exists</p>';
 			}
 			else{
 				echo '<p style="color:green">This username is not taken</p>';

@@ -33,25 +33,40 @@ else
 
       <div class="container">
         <!-- Functions column -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Appointments</h2>
-            <p>Manage and view appointments by setting and viewing appointment dates and information!</p>
-            <p><a class="btn btn-secondary" href="/appointments.php" role="button">Appointments &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Records</h2>
-            <p>Add and view patient records of any form along with critical information about the records!</p>
-            <p><a class="btn btn-secondary" href="/records.php" role="button">Records &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Medications</h2>
-            <p>Add and manage patient medications to stay up to date!</p>
-            <p><a class="btn btn-secondary" href="/medications.php" role="button">Medications &raquo;</a></p>
-          </div>
-          <div class="col-md-4">
-            <h2>Messaging</h2>
-            <p>Easily contact doctors and patients through our messaging portal!</p>
+        <?php 
+          if($_SESSION['header'] == 'header-for-Admin.php') {
+            echo '<div class="row">
+                    <div class="col-md-4">
+                      <h2>Create Account</h2>
+                      <p>Create accounts for Doctor and Patient users!</p>
+                      <p><a class="btn btn-secondary" href="/register2.php" role="button">Create Account &raquo;</a></p>
+                    </div>
+                    <div class="col-md-4">
+                      <h2>Messaging</h2>
+                      <p>Contact doctors, patients, and other administrators through our messaging portal!</p>';
+          }
+          else {
+            echo '<div class="row">
+                    <div class="col-md-4">
+                      <h2>Appointments</h2>
+                      <p>Manage and view appointments by setting and viewing appointment dates and information!</p>
+                      <p><a class="btn btn-secondary" href="/appointments.php" role="button">Appointments &raquo;</a></p>
+                    </div>
+                    <div class="col-md-4">
+                      <h2>Records</h2>
+                      <p>Add and view patient records of any form along with critical information about the records!</p>
+                      <p><a class="btn btn-secondary" href="/records.php" role="button">Records &raquo;</a></p>
+                    </div>
+                    <div class="col-md-4">
+                      <h2>Medications</h2>
+                      <p>Add and manage patient medications to stay up to date!</p>
+                      <p><a class="btn btn-secondary" href="/medications.php" role="button">Medications &raquo;</a></p>
+                    </div> 
+                    <div class="col-md-4">
+                      <h2>Messaging</h2>
+                      <p>Easily contact doctors and patients through our messaging portal!</p>';
+          }
+        ?>
             <p>
               <?php 
                 if(isset($_SESSION['username'])) {
