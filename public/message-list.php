@@ -1,7 +1,7 @@
 <div class="chat_list" id="chat_list">
 
 <?php
-	$q = 'SELECT DISTINCT `from_user`, `to_user`, `message`, `timestamp` FROM `messages` WHERE `from_user` = "'.$_SESSION['username'].'" OR `to_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC';
+	$q = 'SELECT `from_user`, `to_user`, `message`, `timestamp` FROM `messages` WHERE `from_user` = "'.$_SESSION['username'].'" OR `to_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC';
 
 	$r = mysqli_query($link, $q);
 
