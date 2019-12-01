@@ -1,9 +1,7 @@
 <?php
 session_start();
 $page_title = "DP Portal";
-
 include ($_SESSION['header']);
-
 if ($_SESSION['header'] == 'header-for-Dr.php')
 	{ 
         $sql = "SELECT * FROM users WHERE user_auth LIKE '%" . '"' . $_SESSION['username'] . '"' . "%';";
@@ -18,7 +16,6 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 				$queryRecord = "SELECT record, d_username, timestamp FROM records WHERE p_username = '".$row['username']."' ORDER BY p_username ASC, timestamp DESC;" ;
 				
 				$r = mysqli_query($link, $queryRecord);
-
                 if($r) {
                     if ($r->num_rows != 0) {
         				echo "<h3>Records for: " . $row['username'] . "</h3>";
@@ -96,6 +93,5 @@ else
 	{
     echo "<p>Need to login in order to view records!</p>";
 }
-
 include ('footer.php');
 ?>

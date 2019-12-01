@@ -81,6 +81,5 @@ else
 	{
     echo "<p>Need to login in order to view appointments!</p>";
 }
-
 include ('footer.php');
 ?>

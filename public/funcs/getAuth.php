@@ -1,4 +1,7 @@
 <?php
+	if(session_status() == PHP_SESSION_NONE) {
+		session_start();
+	}
 	//session_start();
 	//include('../config.php');
 	
@@ -18,6 +21,9 @@
                 }				
 				
 			}
+			else {
+                $doctorAuth = false;
+            }
 			return $doctorAuth;
 		}
 	}  
@@ -39,6 +45,9 @@
                 }				
 				
 			}
+			else {
+                $userAuth = false;
+            }
 			return $userAuth;
 		}
 	}  
@@ -61,6 +70,9 @@
                 }				
 				
 			}
+			else {
+                $adminAuth = 0;
+            }
 			return $adminAuth;
 		}
 	}  

@@ -1,26 +1,22 @@
 <?php 
-session_start();
+if(session_status() == PHP_SESSION_NONE) {
+  session_start();
+}
 include ('funcs/getAuth.php'); 
 include ('config.php'); 
-
 $page_title = "DP Portal";
-
 $hasDoctor = getDoctorAuthID(); //echo $_SESSION['username']. $isDoctor ;
 $hasPatient = getPatientAuth();
 $isAdmin = getAdminAuth();
-
-if ($hasDoctor !== "false")
+if ($hasDoctor !== false)
 	{$_SESSION['header'] = 'header-for-Dr.php'; include($_SESSION['header']);}
-else if ($hasPatient !== "false")
+else if ($hasPatient !== false)
 	{$_SESSION['header'] = 'header-for-Patient.php'; include($_SESSION['header']);}
 else if ($isAdmin == 1)
 	{$_SESSION['header'] = 'header-for-Admin.php'; include($_SESSION['header']);}
 else
 	{$_SESSION['header'] = 'header.php'; include($_SESSION['header']); header("location:login.php"); }
-
 //include('config.php');
-
-
 ?>
 
 
@@ -30,7 +26,7 @@ else
       <div class="jumbotron">
         <div class="container">
           <h1 class="display-4">Welcome to the Doctor Patient Portal!</h1>
-          <p>Hello <?php echo $_SESSION['username']?>, this is a website designed to manage the all of the doctor and patient functions for a small clinic!</p>
+          <p>Hello<?php if(isset($_SESSION['username'])){echo ' '.$_SESSION['username'];}?>, this is a website designed to manage the all of the doctor and patient functions for a small clinic!</p>
           <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Test Button &raquo;</a></p>-->
         </div>
       </div>
@@ -56,7 +52,30 @@ else
           <div class="col-md-4">
             <h2>Messaging</h2>
             <p>Easily contact doctors and patients through our messaging portal!</p>
-            <p><a class="btn btn-secondary" href="/messaging.php" role="button">Messages &raquo;</a></p>
+            <p>
+              <?php 
+                if(isset($_SESSION['username'])) {
+                  $q = 'SELECT `from_user`, `to_user` FROM `messages` WHERE `to_user` = "'.$_SESSION['username'].'" OR `from_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC LIMIT 1';
+                  $r = mysqli_query($link, $q);
+                  if($r) {
+                    if(mysqli_num_rows($r) > 0) {
+                      $value = mysqli_fetch_object($r);
+                      $to_user = $value->to_user;
+                      $from_user = $value->from_user;
+                      if($to_user == $_SESSION['username']) {
+                        $_SESSION['to_user'] = $from_user;
+                      }
+                      else {
+                        $_SESSION['to_user'] = $to_user;
+                      }
+                    }
+                    else {
+                      $_SESSION['to_user'] = $_SESSION['username'];
+                    }
+                  } 
+                }
+              ?>
+              <a class="btn btn-secondary" href="/messaging.php?user=<?php echo $_SESSION['to_user'];?>" role="button">Messages &raquo;</a></p>
           </div>
         </div>
 

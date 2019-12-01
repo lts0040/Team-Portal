@@ -64,4 +64,3 @@ input[type="date"]:focus:before,
   input[type="date"]:valid:before {
     content: "";
   }
-

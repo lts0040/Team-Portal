@@ -1,12 +1,10 @@
 <?php
-
 $page_title = "DP Portal";
 if(session_status() == PHP_SESSION_NONE) {
   session_start();
 }
 error_reporting(-1);
 ini_set('display_errors', 'true');
-
 include('header-for-Admin.php'); 
 include('config.php');
 ?>
@@ -27,7 +25,6 @@ include('config.php');
 
 	<script>
 		function changehdr(userType){
-
 			if (userType == "doctor") {
 				clearform($("#container_2"));
 				clearform($("#container_3"));
@@ -50,7 +47,6 @@ include('config.php');
 				document.getElementById("container_3").style.display = "block";
 			}
 		}
-
 		function clearform($form) {
 			$form.find(':input:not([name="register"], [name="gender"])').val('');
 		}
@@ -83,20 +79,16 @@ include('config.php');
 				<select multiple="multiple" placeholder="Doctor auth" name="d_auth[]" class="input">
 					<?php
 						$query = 'SELECT username FROM users WHERE user_auth IS NOT NULL AND user_auth <> ""';
-
 						$r = mysqli_query($link, $query);
-
 						if($r) {
 							while($row = mysqli_fetch_assoc($r)) {
 								$doctor = $row['username'];
-
 								?>
 									<option><?php echo $doctor ?></option>
 								<?php
 							}
 						}
 						else {
-
 						}
 					?>
 				</select>
@@ -133,20 +125,16 @@ include('config.php');
 				<select multiple="multiple" id="myMulti" placeholder="User auth" name="u_auth[]" class="input">
 					<?php
 						$query = 'SELECT username FROM users WHERE doctor_auth IS NOT NULL';
-
 						$r = mysqli_query($link, $query);
-
 						if($r) {
 							while($row = mysqli_fetch_assoc($r)) {
 								$doctor = $row['username'];
-
 								?>
 									<option><?php echo $doctor ?></option>
 								<?php
 							}
 						}
 						else {
-
 						}
 					?>
 				</select>
@@ -182,7 +170,6 @@ include('config.php');
 	</div>
 
 	<?php
-
 		if(isset($_POST['register'])) {
 			$user_name = isset($_POST['Username']) ? $_POST['Username'] : '';
 			$Password = isset($_POST['Password']) ? $_POST['Password'] : '';
@@ -200,7 +187,6 @@ include('config.php');
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `user_auth`)
 					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".json_encode($usersarr)."')";
 			}
-
 			else if (isset($_POST['d_auth'])) {
                 $concatusers = "";
                 foreach ($_POST['d_auth'] as $subuser) {
@@ -210,15 +196,12 @@ include('config.php');
 				$query = "INSERT INTO `users` (`username`, `password`, `dob`, `address`, `phone_number`, `gender`, `email`, `doctor_auth`)
 					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."','".json_encode($usersarr)."')";
 			}
-
 			else {
 				$auth = isset($_POST['a_auth']) ? $_POST['a_auth'] : '';
 				$query = "INSERT INTO `users` (`username`, `password`,  `dob`, `address`, `phone_number`, `gender`, `email`, `admin_auth`)
 					  VALUES ('".$user_name."', '".$Password."', '".$dob."','".$address."','".$phone."','".$gender."','".$email."', 1)";
 			}
-
 			$r = mysqli_query($link, $query);
-
 			if($r){
 				echo '<p style="color:green">User registered</p>';
 			}
@@ -233,13 +216,11 @@ include('config.php');
 		document.getElementById("register").disabled = true;
 		function check_user(){
 			var user_name = document.getElementById("user_name").value;
-
 			if (user_name) {
 				$.post("funcs/user_check.php",
 				{
 					user: user_name
 				},
-
 				function(data, status){
 					if(data == '<p style="color:red">User already exists</p>') {
 						document.getElementById("register").disabled = true;
@@ -247,7 +228,6 @@ include('config.php');
 					else{
 						document.getElementById("register").disabled = false;	
 					}
-
 					document.getElementById("checking").style.display = "inline-block";
 					document.getElementById("checking").innerHTML = data;
 				}

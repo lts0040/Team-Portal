@@ -2,9 +2,7 @@
 
 <?php
 	$q = 'SELECT `from_user`, `to_user`, `message`, `timestamp` FROM `messages` WHERE `from_user` = "'.$_SESSION['username'].'" OR `to_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC';
-
 	$r = mysqli_query($link, $q);
-
 	if($r) {
 		if(mysqli_num_rows($r) > 0) {
 			$counter = 0;
@@ -14,10 +12,8 @@
 				$to_user = $row['to_user'];
 				$message = $row['message'];
 				$time = $row['timestamp'];
-
 				if($_SESSION['username'] == $from_user) {
 					if(in_array($to_user, $added_user)) {
-
 					}
 					else {
 						?>	
@@ -31,14 +27,12 @@
 								</a>
 							</div>
 						<?php
-
 						$added_user = array($counter => $to_user);
 						$counter++;
 					}
 				}
 				elseif($_SESSION['username'] == $to_user) {
 					if(in_array($from_user, $added_user)) {
-
 					}
 					else {
 						?>
@@ -52,7 +46,6 @@
 								</a>
 							</div>
 						<?php
-
 						$added_user = array($counter => $from_user);
 						$counter++;
 					}
