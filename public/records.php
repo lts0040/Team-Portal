@@ -62,7 +62,7 @@ else if ($_SESSION['header'] == 'header-for-Patient.php')
     if ($r) {
         if ($r->num_rows != 0) {
             while( $record = mysqli_fetch_assoc($r) ){
-                echo "<h3>Date: " . $record['timestamp'] . "</h3>";
+                echo "<h3>Doctor: " . $record['d_username'] . "</h3>";
                 echo "<h3>Date: " . $record['timestamp'] . "</h3>";
                 echo '<table class="table">';
                 echo '<thead>';
