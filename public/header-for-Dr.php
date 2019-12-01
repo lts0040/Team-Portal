@@ -54,9 +54,6 @@ if(session_status() == PHP_SESSION_NONE) {
         <a class="dropdown-item" href="/create-medication.php">Create Medication</a>
       </div>
     </li>
-	<li class="nav-item">
-			  <a class="nav-link" href="/view-patients/view-patients.php">View Patient</a>
-			</li>
     <li class="nav-item">
       <?php 
         if(isset($_SESSION['username'])) {

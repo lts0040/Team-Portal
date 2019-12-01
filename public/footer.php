@@ -1,1 +1,7 @@
-<p>This website was made for CSCE 3444 by: Anthony Nguyen, Luke Simpson, Natalie Tran, Ryan Vo</p>
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+    <span class="text-muted">This webiste was made for CSCE 3444 by Team Portal!</span>
+</div>
+</footer>
+<!-- Footer -->
