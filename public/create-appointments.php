@@ -71,26 +71,26 @@ if(isset($_POST)==true && empty($_POST)==false){
     echo "<p>Time end: " . $_POST['time_end'] . "</p>";
     echo "<p>Purpose: " . $_POST['purpose'] . "</p>";
     $sql = "SELECT * FROM appointments WHERE p_username='".$_POST['Username']."' OR d_username='".$_SESSION['username']."' AND date_start<='".$_POST['time_start']."' AND date_end>='".$_POST['time_start']."';";
+
     $result = mysqli_query($link, $sql);
-    $resultCheck = mysqli_num_rows($result);
     
-    if($resultCheck > 0){
-        echo "<p>Error: Conflicting appointment time with doctor/patient</p>";
-    }
-    else {
-        if ($_POST['time_end'] > $_POST['time_start']) {
+    if(mysqli_num_rows($result) == 0) {
+        if ($_POST['time_end'] < $_POST['time_start']) {
             echo "<p>Error: End time is before start time!</p>";
         }
         else {
             $sql_statement = "INSERT INTO appointments (d_username,p_username,date_start,date_end,purpose) VALUES('" . $_SESSION['username'] . "','" . $_POST['Username'] . "','" . $_POST['time_start'] . "','" . $_POST['time_end'] . "','" . $_POST['purpose'] . "');";
             
             if (!mysqli_query($link, $sql_statement)) {
-                die('Error: ' . mysql_error());
+                echo 'Error: ' . mysqli_error($link);
             }
             else {
                 echo "<p>Appointment successfully added!</p>";
             }
         }
+    }
+    else {
+        echo "<p>Error: Conflicting appointment time with doctor/patient</p>";
     }
 }
 }

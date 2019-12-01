@@ -25,7 +25,7 @@ if ($_SESSION['header'] == 'header-for-Dr.php')
 			
 			while( $row = mysqli_fetch_assoc($result) ){
 				
-				$queryRecord = "SELECT date_start, date_end, purpose FROM appointments WHERE p_username = '".$row['username']."' AND d_username='".$_SESSION[username]."' AND date_start>=NOW() ORDER BY date_start ASC;" ;
+				$queryRecord = "SELECT date_start, date_end, purpose FROM appointments WHERE p_username = '".$row['username']."' AND d_username='".$_SESSION['username']."' AND date_start>=NOW() ORDER BY date_start ASC;" ;
 				
 				$r = mysqli_query($link, $queryRecord);
 				
