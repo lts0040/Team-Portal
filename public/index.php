@@ -42,6 +42,11 @@ else
                       <p><a class="btn btn-secondary" href="/register2.php" role="button">Create Account &raquo;</a></p>
                     </div>
                     <div class="col-md-4">
+                      <h2>Edit Account</h2>
+                      <p>Edit Doctor and Patient accounts to change user information!</p>
+                      <p><a class="btn btn-secondary" href="/manage-accounts.php" role="button">Edit Account &raquo;</a></p>
+                    </div>
+                    <div class="col-md-4">
                       <h2>Messaging</h2>
                       <p>Contact doctors, patients, and other administrators through our messaging portal!</p>';
           }

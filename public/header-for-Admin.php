@@ -30,6 +30,9 @@ if(session_status() == PHP_SESSION_NONE) {
       <a class="nav-link" href="/register2.php">Create Account</a>
     </li>
     <li class="nav-item">
+      <a class="nav-link" href="/manage-accounts.php">Edit Account</a>
+    </li>
+    <li class="nav-item">
       <?php 
         if(isset($_SESSION['username'])) {
           $q = 'SELECT `from_user`, `to_user` FROM `messages` WHERE `to_user` = "'.$_SESSION['username'].'" OR `from_user` = "'.$_SESSION['username'].'" ORDER BY `m_uid` DESC LIMIT 1';
